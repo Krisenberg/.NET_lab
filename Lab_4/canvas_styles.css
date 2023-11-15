@@ -1,0 +1,23 @@
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 25px;
+    font-weight: 550;
+    margin-bottom: 50px;
+}
+
+.drawingCanvas {
+    border: 0.5px solid #1e92a4;
+}
+
+.float_right {
+    float: right;
+
+}
+
+.fixed_bottom {
+    position: fixed;
+    float: bottom;
+    top: 12em;
+    right: 10em;
+}

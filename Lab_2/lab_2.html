@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Krzysztof Głowacz">
+    <meta name="keywords" content="HTML, HTML5, List, Table, Form">
+    <meta name="description" content="This file is an example of a simple website. It shows how to use lists, tables, forms, etc...">
+    <meta http-equiv="refresh" content="300">
+
+    <title>Document</title>
+</head>
+<body>
+    <header id="Top">
+        <h1>MENU:</h1>
+        <nav>
+            <ul>
+                <li><a href="#Lists">Go to the lists</a></li>
+                <li><a href="#Table">Go to the table</a></li>
+                <li><a href="#Modification">Go to the modification</a></li>
+                <li><a href="#Form">Go to the form</a></li>
+                <li><a href="#Bottom">Go to the bottom</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h3>Dummy article</h3>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+        </article>
+        <h1 id="Lists">Examples of the lists</h1>
+        <h3>Countries and dependencies by area:</h3>
+        <ol>
+            <li>
+                Russia
+                <ol type="I">
+                    <li>Moscow</li>
+                    <li>Saint Petersburg</li>
+                    <li>Novosibirsk</li>
+                </ol>
+            </li>
+            <li>
+                Canada
+                <ol type="I">
+                    <li>Toronto</li>
+                    <li>Montreal</li>
+                    <li>Vancouver</li>
+                </ol>
+            </li>
+            <li>...</li>
+            <li value="69">
+                Poland
+                <ol type="I">
+                    <li>Warsaw</li>
+                    <li>Kraków</li>
+                    <li>Wrocław
+                        <ul>
+                            <li>Krzyki
+                                <ul type="disc">
+                                    <li>Gaj</li>
+                                    <li>Tarnogaj</li>
+                                    <li>Huby</li>
+                                </ul>
+                            </li>
+                            <li>Fabryczna</li>
+                            <li>Śródmieście</li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+        <h3>Most popular cities in Europe among tourists:</h3>
+        <ol>
+            <li>London</li>
+            <li>Paris</li>
+            <li>Rome</li>
+        </ol>
+        <h3>Most popular attractions in Rome:</h3>
+        <ul>
+            <li>Colosseum</li>
+            <li>Trevi fountain</li>
+            <li>Vatican City and the St. Peter&apos;s Basilica</li>
+        </ul>
+        <figure>
+            <img src="https://img.oastatic.com/img2/77284700/max/der-trevi-brunnen-in-rom.jpg" width="410" height="306">
+            <figcaption>Trevi Fountain in Rome</figcaption>
+        </figure>
+        <details>
+            <summary>History of the fountain before 1629</summary>
+            The fountain, at the junction of three roads (tre vie), marks the terminal point of the "modern" <br>
+            Acqua Vergine—the revived Aqua Virgo, one of the aqueducts that supplied water to ancient Rome. <br>
+            In 19 BC, supposedly with the help of a virgin, Roman technicians located a source of pure water <br>
+            some 13 km (8.1 mi) from the city. (This scene is presented on the present fountain's façade.) <br>
+            However, the eventual indirect route of the aqueduct made its length some 22 km (14 mi). <br>
+            This Aqua Virgo led the water into the Baths of Agrippa. It served Rome for more than 400 years.
+            <p>source: <a href="https://en.wikipedia.org/wiki/Trevi_Fountain#History_before_1629" target="_blank">Wikipedia</a></p>
+        </details>
+
+        <section>
+            <h3>Definition list of the terms related to the <em>European Union</em>:</h3>
+            <dl>
+                <dt><strong>European Union</strong></dt>
+                <dd>The European Union (EU) is a supranational political and economic union of 27 member states 
+                    that are located primarily in Europe. The union has a total area of 4,233,255 km<sup>2</sup>.</dd>
+                <dt><strong>Schengen Area</strong></dt>
+                <dd>
+                    The Schengen Area is an area comprising 27 European countries that have officially abolished
+                    many passport and many other types of border control at their mutual borders.
+                </dd>
+                <dt><strong>European Council</strong></dt>
+                <dd>
+                    The European Council (informally <strong>EUCO</strong>) is a collegiate body (directorial system) that defines the
+                    overall political direction and priorities of the <em>EU</em>. The European Council is part of
+                    the executive of the <em>EU</em>, beside the <em>European Commission</em>.
+                </dd>
+            </dl>
+            source: <a href="https://en.wikipedia.org/wiki/" target="_blank">Wikipedia</a>
+            <p>
+                <a href="#Top"><mark>Go to top</mark></a>
+            </p>
+        </section>
+
+        <article>
+            <h3>Dummy article</h3>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+        </article>
+
+        <h1 id="Table">Table</h1>
+        <table border="1">
+            <caption>Table presenting some tourist attractions</caption>
+            <thead>
+                <tr>
+                    <th colspan="5">Pictures in this column come from...</th>
+                </tr>
+                <tr>
+                    <th>...Spain</th><th colspan="2">...Italy</th>
+                    <th>...Poland</th><th>...Germany</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2"><img src="https://fullsuitcase.com/wp-content/uploads/2022/02/Best-of-Barcelona-what-to-see-and-do-in-Barcelona-Spain.jpg" height="160" width="240" alt="Image of the Parc Guell"></td>
+                    <td colspan="2"><strong>&leftarrow; Park Güell (Barcelona)</strong></td>
+                    <td rowspan="2"><img src="https://www.xperiencepoland.com/wp-content/uploads/2023/10/7637-medieval-marvel-unveiling-the-malbork-castle-saga-scaled.jpg" height="160" width="240" alt="Image of the Malbork Castle"></td>
+                    <td><strong>&leftarrow; Malbork Castle (Poland)</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Park Güell is a privatized park system <br>
+                        composed of gardens and architectural <br>
+                        elements located on Carmel Hill, <br>
+                        in Barcelona, Catalonia, Spain.
+                    </td>
+                    <td><strong>&downarrow; Brandenburg Gate (Berlin)</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        Wrocław is a city in southwestern Poland and the largest city in the historical region of Silesia.<br>
+                        It lies on the banks of the River Oder in the Silesian Lowlands of Central Europe, roughly 40 kilometres (25 mi) <br>
+                        from the Sudeten Mountains to the south. As of 2023, the official population of Wrocław is 674,132 making it the<br>
+                        third largest city in Poland. Population of Wrocław metropolitan area is around 1,25 million. <br>
+                        Wrocław is the historical capital of Silesia and Lower Silesia. Today, it is the capital of the Lower Silesian Voivodeship.
+                    </td>                    
+                    <td rowspan="2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Brandenburger_Tor_abends.jpg/1200px-Brandenburger_Tor_abends.jpg" height="160" width="240" alt="Image of the Brandenburger Tor"></td>
+                </tr>
+                <tr>
+                    <td><strong>&downarrow; Alhambra (Spain)</strong></td>
+                    <td colspan="2" rowspan="2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1200px-Colosseo_2020.jpg" height="160" width="250" alt="Image of the Colosseum"></td>
+                    <td><strong>&downarrow; Wroław Old Town (Wrocław)</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><img src="https://hispanico.pl/wp-content/uploads/2019/02/alhambra-palac-granada-andaluzja-hiszpania-zamek-panorama-krajobraz-widk-gory-architektura-zabytek-piekny.jpg" height="160" width="240" alt="Image of the Alhambra"></td>
+                    <td rowspan="2"><img src="https://freewalkingtour.com/wp-content/uploads/2019/12/Old-Town-Wroclaw-min.jpg" height="160" width="240" alt="Image of the Alhambra"></td>
+                    <td rowspan="2">
+                        The Brandenburg Gate is an <br> 
+                        18th-century neoclassical <br>
+                        monument in Berlin, built on the <br>
+                        orders of Prussian king Frederick <br>
+                        William II after restoring the <br>
+                        Orangist power by suppressing the <br>
+                        Dutch popular unrest.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <strong>&uparrow; Colosseum (Rome)</strong><br> 
+                        The Colosseum is an elliptical amphi-<br>
+                        theatre in the centre of the city of <br>
+                        Rome, just east of the Roman Forum.<br>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Source of the data:</th>
+                    <td><a href="https://en.wikipedia.org/wiki/Colosseum" target="_blank">Colosseum</a></td>
+                    <td><a href="https://en.wikipedia.org/wiki/Park_G%C3%BCell" target="_blank">Park Güell</a></td>
+                    <td><a href="https://en.wikipedia.org/wiki/Wroc%C5%82aw" target="_blank">Wrocław</a></td>
+                    <td><a href="https://en.wikipedia.org/wiki/Brandenburg_Gate" target="_blank">Brandenburg Gate</a></td>
+                </tr>
+            </tfoot>    
+        </table>
+        <p>
+            <a href="#Top"><mark>Go to top</mark></a>
+        </p>
+
+        <h1 id="Modification">Modification</h1>
+        <table border="1">
+            <caption>Some other table - modification</caption>
+            <tbody>
+                <tr>
+                    <td>A</td>
+                    <td>B</td>
+                    <td colspan="3" rowspan="2"><img src="https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=0.813xw:0.721xh;0.0994xw,0.128xh&resize=1200:*" height="160" width="320" alt="Image of the car"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Some text here. Lorem, ipsum dolor sit<br>
+                        amet consectetur adipisicing elit.
+                    </td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>D</td>
+                    <td>E</td>
+                    <td>F</td>
+                    <td>G</td>
+                </tr>
+                <tr>
+                    <td>H</td>
+                    <td colspan="3">
+                        <a href="https://www.google.pl/?hl=pl" target="_blank">Google search</a>
+                    </td>
+                    <td>I</td>
+                </tr>
+                <tr>
+                    <td>J</td>
+                    <td>K</td>
+                    <td>L</td>
+                    <td colspan="2">1 &amp; 0</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <a href="#Top"><mark>Go to top</mark></a>
+        </p>
+
+        <article>
+            <h3>Dummy article</h3>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+        </article>
+
+        <h1 id="Form">Form</h1>
+        <p>The following form aims to try many types of input fields. <ins>Feel free to try it:</ins></p>
+
+        <form method="post" action="http://localhost:5500/lab_3.html">
+            <input type="hidden" name="secretData" value="dotNETlab">
+
+            <p>Logging section: </p>
+            <p>
+                <label for="idEmail">Email:</label>
+                <input id="idEmail" name="email" type="email" size="30" maxlength="70">
+            </p>
+            <p>
+                <label for="idPassword">Password:</label>
+                <input id="idPassword" name="password" type="password" size="30" maxlength="50">
+            </p>
+            <p>
+                Choose the cities in Poland that you have been to:<br>
+                <label><input name="citiesPL" type="checkbox" value="warsaw" checked>Warsaw</label>
+                <label><input name="citiesPL" type="checkbox" value="wroclaw">Wrocław</label><br>
+                <label><input name="citiesPL" type="checkbox" value="krakow">Kraków</label>
+                <label><input name="citiesPL" type="checkbox" value="poznan">Poznań</label><br>
+                <label><input name="citiesPL" type="checkbox" value="lodz">Łódź</label>
+                <label><input name="citiesPL" type="checkbox" value="gdansk">Gdańsk</label><br>
+            </p>
+            <p>
+                What is the capital of Switzerland?
+                <label><input name="capitalSwiss" type="radio" value="zurich">Zurich</label>
+                <label><input name="capitalSwiss" type="radio" value="geneva">Geneva</label>
+                <label><input name="capitalSwiss" type="radio" value="basel">Basel</label>
+                <label><input name="capitalSwiss" type="radio" value="lausanne">Lausanne</label>
+                <label><input name="capitalSwiss" type="radio" value="bern">Bern</label>
+            </p>
+            <p>
+                <label>
+                    How many countries are currently (23.10.2023) in the European Union?
+                    <select name="euNumber">
+                        <option value="30">30</option>
+                        <option value="29">29</option>
+                        <option value="28">28</option>
+                        <option value="27">27</option>
+                        <option value="26">26</option>
+                        <option value="25">25</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                How many European countries have you been to?
+                <label for="visitedNumber">Visited countries (between 1 and 44):</label>
+                <input type="number" id="visitedNumber" name="visitedNumber" min="1" max="44">
+            </p>
+            <p>
+                <label for="countryChoice">Choose your favourite country from the list:</label>
+                <input list="countries" id="countryChoice" name="countryChoice" placeholder="Country name">
+                <datalist id="countries">
+                    <option value="Poland">
+                    <option value="Germany">
+                    <option value="Portugal">
+                    <option value="Spain">
+                    <option value="France">
+                    <option value="Italy">
+                    <option value="Sweden">
+                    <option value="Switzerland">
+                    <option value="Croatia">
+                    <option value="Great Britain">
+                </datalist>
+            </p>
+            <p>
+                <label>Please select today's date:</label>
+                <input id="idDate" name="Date" type="date">
+            </p>
+            <p>
+                <label>Please select your current local time:</label>
+                <input id="idTime" name="Time" type="time">
+            </p>
+            <p>
+                <textarea name="opinion" cols="50" rows="5">If you want to leave some comment, do it here...</textarea>
+            </p>                
+            <p>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Clear">
+            </p>
+
+
+        </form>
+        <p>
+            <a href="#Top"><mark>Go to top</mark></a>
+        </p>
+        <article>
+            <h3>Dummy article</h3>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit malesuada justo, nec fermentum nisl consectetur et. Praesent iaculis odio eget leo fermentum condimentum.
+            Praesent viverra turpis eget velit scelerisque consequat. Morbi efficitur dolor sit amet faucibus auctor. In hac habitasse platea dictumst. Suspendisse et ligula rhoncus, mattis metus ut,
+            sodales neque. Praesent tristique dui non quam blandit, eget dapibus diam mattis. Suspendisse commodo velit neque. Curabitur posuere nibh a felis porta, id lacinia metus consectetur.
+            Nunc luctus quis elit ornare malesuada. Suspendisse suscipit est nec mauris mollis rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Curabitur mauris odio, blandit ut massa a, mollis sollicitudin ipsum. Praesent facilisis sagittis fringilla. Sed nec aliquam odio, a aliquet massa. Duis iaculis euismod nisl, vel
+            aliquam ipsum. Donec urna lectus, fringilla ac rhoncus id, lobortis mollis ligula. Proin tempus tristique massa in volutpat. Praesent in lectus enim.
+            Duis sit amet nulla dui. Vestibulum sollicitudin tristique massa, nec consectetur massa mollis ac. Aenean risus mi, efficitur non viverra sed, molestie vel justo. Proin vehicula
+            auctor arcu quis tristique. Morbi nec porta purus. Ut nec ligula eros. Ut ornare odio in turpis semper, vel aliquam est ornare. Sed aliquam lorem eros, quis varius nisi hendrerit vitae.
+            Integer porttitor facilisis mauris, eget rutrum urna semper non. Donec consectetur turpis et lectus aliquam, sed dictum lacus posuere. Etiam eu enim non dolor ultrices ullamcorper.
+            Curabitur luctus cursus justo. Sed luctus tincidunt ultricies. Suspendisse ultricies pretium fermentum. Nullam varius tempus nisl, ut aliquam ipsum. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Proin egestas leo nisl, vel posuere lacus condimentum et. Aliquam a ante a est hendrerit rhoncus eu ac ante. Vivamus tempor est
+            nisi, sed lobortis massa dapibus eu. Mauris nec aliquet risus.
+        </article>
+    </main>
+    <footer id="Bottom">
+        <p>
+            <a href="#Top"><mark>Go to top</mark></a>
+        </p>
+        <strong>Author: Krzysztof Głowacz &reg;</strong>
+    </footer>
+</body>
+</html>

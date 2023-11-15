@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mult_table_styles.css">
+    <title>Mult table</title>
+</head>
+<body>
+    <h1 id="h1_elem">This is a randomly generated multiplicity table:</h1>
+    <script>
+        let n_string=window.prompt("Input number n (n∈[5,20]): ","8");
+        let n;
+        var parent = document.getElementById("h1_elem");
+        if (n_string==null || isNaN(n_string) || parseInt(n_string)<5 || parseInt(n_string)>20){
+            n=8;
+            let invalid_data_msg = document.createElement("p");
+            invalid_data_msg.id="invalid_data_msg";
+            invalid_data_msg.innerText="Provided data was invalid. Value of n has been set to: " + n;
+            parent.appendChild(invalid_data_msg);
+        } else {
+            n=parseInt(n_string);
+        }
+        let table = document.createElement("table");
+        table.id="mult_table";
+        //let table_elem = document.getElementById("mult_table");
+        parent.appendChild(table);
+        const col_values = new Array(n+1);
+        const row_values = new Array(n+1);
+        function generateRandomNum(min, max) {
+            const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            return randomNum;
+        }
+        const min = 1;
+        const max = 99;
+        for (let i = 0; i < n; i++) {
+            col_values[i]=generateRandomNum(min,max);
+            row_values[i]=generateRandomNum(min,max);
+        }
+        for (let i = 0; i <= n; i++) {
+            let table_row = document.createElement("tr");
+            let row_id = "row_"+String(i);
+            table_row.id = row_id;
+            // let parent_row = document.getElementById(row_id);
+            for (let j = 0; j <= n; j++) {
+                let table_cell = document.createElement("td");
+                if (i==0) {
+                    table_cell.className = "header_cell";
+                    if (j > 0)
+                        table_cell.innerText = String(col_values[j-1]);
+                } else {
+                    if (j==0) {
+                        table_cell.className = "header_cell";
+                        table_cell.innerText = String(row_values[i-1]);
+                    } else {
+                        let mult_result = row_values[i-1] * col_values[j-1];
+                        table_cell.innerText = String(mult_result);
+                        if (mult_result % 2 == 0)
+                            table_cell.className = "even";
+                        else
+                            table_cell.className = "odd";
+                    }
+                }
+                let cell_id = "cell_"+String(i)+"_"+String(j);
+                table_cell.id=cell_id;
+                //let cell_elem = document.getElementById(cell_id);
+                table_row.appendChild(table_cell);
+            }
+            table.appendChild(table_row);
+        }
+        let legend_text = document.createElement("p");
+        legend_text.id = "legend_text";
+        legend_text.innerText = "Legend:"
+        parent.appendChild(legend_text);
+        let box_even = document.createElement("div");
+        box_even.id = "box_even";
+        box_even.className = "box even";
+        parent.appendChild(box_even);
+        let box_even_text = document.createElement("div");
+        box_even_text.id = "box_even_text";
+        box_even_text.innerText = "- even number"
+        box_even_text.className = "box_text";
+        box_even.appendChild(box_even_text);
+        let box_odd = document.createElement("div");
+        box_odd.id = "box_odd";
+        box_odd.className = "box odd";
+        parent.appendChild(box_odd);
+        let box_odd_text = document.createElement("div");
+        box_odd_text.id = "box_odd_text";
+        box_odd_text.innerText = "- odd number"
+        box_odd_text.className = "box_text";
+        box_odd.appendChild(box_odd_text);
+
+    </script>
+
+    
+</body>
+</html>

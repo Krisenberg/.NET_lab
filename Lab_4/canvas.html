@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="canvas_styles.css">
+    <title>Canvas</title>
+</head>
+<body>
+    <script>
+        function getRelativeCoordinates(event, canvas) {
+          const rect = canvas.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+          return { x, y };
+        }
+      
+        window.addEventListener("load", function() {
+            
+            var elements = document.getElementsByClassName("drawingCanvas");
+      
+            for (var i = 0; i < elements.length; i++) {
+                setupCanvas(elements[i]);
+            }
+
+        });
+      
+        function setupCanvas(canvas) {
+            
+            var ctx = canvas.getContext("2d");
+      
+            canvas.addEventListener("mousemove", function(e) {
+                
+                const coords = getRelativeCoordinates(e, canvas);
+        
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(coords.x, coords.y);
+                ctx.moveTo(0, canvas.height);
+                ctx.lineTo(coords.x, coords.y);
+                ctx.moveTo(canvas.width, 0);
+                ctx.lineTo(coords.x, coords.y);
+                ctx.moveTo(canvas.width, canvas.height);
+                ctx.lineTo(coords.x, coords.y);
+                ctx.strokeStyle = "red";
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            })
+      
+            canvas.addEventListener('mouseleave', function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+        };
+    </script>
+
+    <h1>This is a website to show possible usage of canvas and events</h1>
+    
+    <canvas id="canvas1" class="drawingCanvas" width="500" height="300"></canvas>
+
+    <canvas id="canvas2" class="drawingCanvas" width="200" height="100"></canvas>
+
+    <h2>Some text</h2>
+        <section>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            <canvas id="canvas3" class="drawingCanvas" width="300" height="500"></canvas>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+        </section>
+
+        <canvas id="canvas4" class="drawingCanvas float_right" width="200" height="100"></canvas>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatem illum amet dolorum id rerum iusto earum quidem fugit commodi debitis, modi corporis enim eos est nihil tenetur distinctio molestiae!
+        <canvas id="canvas5" class="drawingCanvas fixed_bottom" width="400" height="200"></canvas>
+
+    
+</body>
+</html>

@@ -1,0 +1,66 @@
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+#mult_table {
+    margin-top: 50px;
+}
+
+#invalid_data_msg {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: rgb(203, 65, 55);
+    background-color: rgba(224, 224, 149, 0.656);
+    width: fit-content;
+}
+
+table td{
+    border: 2px solid rgb(0, 0, 0);
+    font-size: 18px;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.header_cell {
+    font-weight: 850;
+    background-color:rgb(32, 61, 43);
+    color: white;
+}
+
+.box {
+    width: 70px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#legend_text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 50px;
+    font-style: italic;
+}
+
+.box_text {
+    position: relative;
+    top: 0px;
+    right: -100px;
+    width: 200px;
+    font-size: 25px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.even {
+    background-color: rgba(115, 192, 192, 0.618);
+}
+
+.odd {
+    background-color: rgb(103, 166, 189);
+}
