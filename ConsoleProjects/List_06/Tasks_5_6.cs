@@ -61,41 +61,6 @@ namespace List_06
             int properStrings = 0;
             int others = 0;
 
-            //foreach (object obj in objects)
-            //{
-            //    TypeCode objTypeCode = Type.GetTypeCode(obj.GetType());
-            //    switch (objTypeCode)
-            //    {
-            //        case TypeCode.Int32:
-            //            if ((int)obj % 2 == 0)
-            //            {
-            //                evenInts++;
-            //                break;
-            //            }
-            //            else
-            //                goto default;
-            //        case TypeCode.Double:
-            //            if ((double)obj > 0)
-            //            {
-            //                positiveDubles++;
-            //                break;
-            //            }
-            //            else
-            //                goto default;
-            //        case TypeCode.String:
-            //            string strObj = (string)obj;
-            //            if (strObj.Length >= 5)
-            //            {
-            //                properStrings++;
-            //                break;
-            //            }
-            //            else
-            //                goto default;
-            //        default:
-            //            others++;
-            //            break;
-            //    }
-            //}
             foreach (object obj in objects)
             {
                 switch (obj)
