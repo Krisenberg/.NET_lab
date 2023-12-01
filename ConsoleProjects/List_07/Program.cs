@@ -108,6 +108,52 @@ namespace List_07
         }
     }
 
+    public class StudentToTopic
+    {
+        public int StudentId { get; set; }
+        public int TopicId { get; set; }
+
+        public StudentToTopic(int studentId, int topicId)
+        {
+            this.StudentId = studentId;
+            this.TopicId = topicId;
+        }
+
+        public override string ToString()
+        {
+            return $"Student {StudentId} --> Topic {TopicId}";
+        }
+    }
+
+    public class StudentWithoutTopics
+    {
+        public int Id { get; set; }
+        public int Index { get; set; }
+        public string Name { get; set; }
+        public Gender Gender { get; set; }
+        public bool Active { get; set; }
+        public int DepartmentId { get; set; }
+
+        public StudentWithoutTopics(int id, int index, string name, Gender gender, bool active,
+            int departmentId)
+        {
+            this.Id = id;
+            this.Index = index;
+            this.Name = name;
+            this.Gender = gender;
+            this.Active = active;
+            this.DepartmentId = departmentId;
+        }
+
+        public override string ToString()
+        {
+            var result = $"{Id,2}) {Index,5}, {Name,11}, {Gender,6},{(Active ? "active" : "no active"),9},{DepartmentId,2}";
+            return result;
+        }
+    }
+
+
+
     public static class Generator
     {
         public static int[] GenerateIntsEasy()
@@ -183,10 +229,11 @@ namespace List_07
         {
             //Generator.GenerateDepartmentsEasy().ForEach(Console.WriteLine);
             var students = Generator.GenerateStudentsWithTopicsEasy();
-            //Tasks_1_2.GroupSortedStudentsBySurnameNGroups(students, 3);
-            //Tasks_1_2.GroupTopicsByIncidence(students);
-            //Tasks_1_2.GroupTopicsByIncidenceWithinGender(students);
-            Tasks_1_2.ConvertStudentsWithTopicsToStudents(students);
+            //Tasks_1_2_3.GroupSortedStudentsBySurnameNGroups(students, 3);
+            //Tasks_1_2_3.GroupTopicsByIncidence(students);
+            //Tasks_1_2_3.GroupTopicsByIncidenceWithinGender(students);
+            //Tasks_1_2_3.ConvertStudentsWithTopicsToStudentsAB(students);
+            Tasks_1_2_3.ConvertStudentsWithTopicsToStudentsC(students);
         }
     }
 }
