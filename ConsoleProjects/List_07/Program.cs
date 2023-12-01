@@ -59,6 +59,55 @@ namespace List_07
         }
     }
 
+    public class Topic
+    {   
+        public int Id { get; set; }
+        public String Name { get; set; }
+
+        public Topic(int id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"{Id} --> {Name}";
+        }
+
+    }
+
+    public class Student
+    {
+        public int Id { get; set; }
+        public int Index { get; set; }
+        public string Name { get; set; }
+        public Gender Gender { get; set; }
+        public bool Active { get; set; }
+        public int DepartmentId { get; set; }
+        public List<int> TopicsIds { get; set; }
+
+        public Student(int id, int index, string name, Gender gender, bool active,
+            int departmentId, List<int> topicsIds)
+        {
+            this.Id = id;
+            this.Index = index;
+            this.Name = name;
+            this.Gender = gender;
+            this.Active = active;
+            this.DepartmentId = departmentId;
+            this.TopicsIds = topicsIds;
+        }
+
+        public override string ToString()
+        {
+            var result = $"{Id,2}) {Index,5}, {Name,11}, {Gender,6},{(Active ? "active" : "no active"),9},{DepartmentId,2}, topics: ";
+            foreach (var topicId in TopicsIds)
+                result += topicId + ", ";
+            return result;
+        }
+    }
+
     public static class Generator
     {
         public static int[] GenerateIntsEasy()
@@ -135,8 +184,9 @@ namespace List_07
             //Generator.GenerateDepartmentsEasy().ForEach(Console.WriteLine);
             var students = Generator.GenerateStudentsWithTopicsEasy();
             //Tasks_1_2.GroupSortedStudentsBySurnameNGroups(students, 3);
-            Tasks_1_2.GroupTopicsByIncidence(students);
-            Tasks_1_2.GroupTopicsByIncidenceWithinGender(students);
+            //Tasks_1_2.GroupTopicsByIncidence(students);
+            //Tasks_1_2.GroupTopicsByIncidenceWithinGender(students);
+            Tasks_1_2.ConvertStudentsWithTopicsToStudents(students);
         }
     }
 }
