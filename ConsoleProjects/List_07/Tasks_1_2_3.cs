@@ -24,8 +24,7 @@ namespace List_07
                                  Students = studGroup.Select(s => s.student)
                              };
 
-            Console.WriteLine("Sorted students by Name (and Index in case of equal names) grouped");
-            Console.WriteLine($"in {n}-element groups:\n");
+            Console.WriteLine($"Sorted students by Name (and Index in case of equal names) grouped in {n}-element groups:\n");
             foreach (var group in studGroups)
             {
                 Console.WriteLine("Group number: " + (group.GroupID + 1));

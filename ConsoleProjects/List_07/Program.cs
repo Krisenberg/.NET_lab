@@ -227,14 +227,20 @@ namespace List_07
     {
         static void Main(string[] args)
         {
-            //Generator.GenerateDepartmentsEasy().ForEach(Console.WriteLine);
             var students = Generator.GenerateStudentsWithTopicsEasy();
-            //Tasks_1_2_3.GroupSortedStudentsBySurnameNGroups(students, 3);
-            //Tasks_1_2_3.GroupTopicsByIncidence(students);
-            //Tasks_1_2_3.GroupTopicsByIncidenceWithinGender(students);
-            //Tasks_1_2_3.ConvertStudentsWithTopicsToStudentsAB(students);
-            //Tasks_1_2_3.ConvertStudentsWithTopicsToStudentsC(students);
+            Console.WriteLine("_____________________TASK 1_____________________");
+            Tasks_1_2_3.GroupSortedStudentsBySurnameNGroups(students, 3);
+            Console.WriteLine("\n\n_____________________TASK 2a_____________________");
+            Tasks_1_2_3.GroupTopicsByIncidence(students);
+            Console.WriteLine("\n\n_____________________TASK 2b_____________________");
+            Tasks_1_2_3.GroupTopicsByIncidenceWithinGender(students);
+            Console.WriteLine("\n\n_____________________TASK 3ab_____________________");
+            Tasks_1_2_3.ConvertStudentsWithTopicsToStudentsAB(students);
+            Console.WriteLine("\n\n_____________________TASK 3c_____________________");
+            Tasks_1_2_3.ConvertStudentsWithTopicsToStudentsC(students);
+            Console.WriteLine("\n\n_____________________TASK 4_____________________");
             Task_4.ReflectionDemo();
+            Console.WriteLine("\n\n_____________________THE END_____________________\n\n\n");
         }
     }
 }
