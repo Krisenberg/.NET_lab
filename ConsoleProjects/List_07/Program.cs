@@ -233,7 +233,8 @@ namespace List_07
             //Tasks_1_2_3.GroupTopicsByIncidence(students);
             //Tasks_1_2_3.GroupTopicsByIncidenceWithinGender(students);
             //Tasks_1_2_3.ConvertStudentsWithTopicsToStudentsAB(students);
-            Tasks_1_2_3.ConvertStudentsWithTopicsToStudentsC(students);
+            //Tasks_1_2_3.ConvertStudentsWithTopicsToStudentsC(students);
+            Task_4.ReflectionDemo();
         }
     }
 }

@@ -75,28 +75,10 @@ namespace List_07
                               )
                               group genderTopicCountGroup by genderTopicCountGroup.Gender into genderGroup
                               select genderGroup;
-            //var topicsGroup = from genderTopic in (
-            //                        from stud in students
-            //                        from topic in stud.Topics
-            //                        select new
-            //                        {
-            //                            Gender = stud.Gender,
-            //                            Topic = topic
-            //                        }
-            //                      )
-            //                  group genderTopic by genderTopic into topicGroup
-            //                  orderby topicGroup.Count() descending
-            //                  select new
-            //                  {
-            //                      Topic = topicGroup.Key.Topic,
-            //                      Gender = topicGroup.Key.Gender,
-            //                      Count = topicGroup.Count()
-            //                  };
 
             Console.WriteLine("\n\nSorted topics by their incidence withing gender:");
             foreach (var group in topicsGroup)
             {
-                //Console.WriteLine($"Topic: {group.Topic}, Gender: {group.Gender}, Count: {group.Count}");
                 Console.WriteLine($"Gender: {group.Key}");
                 group.ToList().ForEach(groupItem => Console.WriteLine($"\tCount: {groupItem.Count} ---> Topic: {groupItem.Topic}"));
             }
