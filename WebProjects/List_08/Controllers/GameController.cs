@@ -41,7 +41,7 @@ namespace List_08.Controllers
                 ((userGuess < _randValue) ? "Your guess is too low!" : "Your guess is correct!");
 
                 feedbackCSSclass = (userGuess > _randValue) ? "too_high" :
-                ((userGuess < _randValue) ? "too_low!" : "correct");
+                ((userGuess < _randValue) ? "too_low" : "correct");
 
                 scope = $"[0, {_scope.Value}]";
             }

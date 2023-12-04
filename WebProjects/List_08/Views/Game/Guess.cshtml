@@ -2,13 +2,15 @@
     ViewBag.Title = "Game";
 }
 
+<h1>Simple guessing game</h1>
+
 <div class="game-main_div">
     <div class="game-main_box">
-        <p class="game-guess_number">This is a guess number: @ViewData["GuessCounter"]</p>
+        <p class="game-guess_number">This is a guess number: <span class="controller_data">@ViewData["GuessCounter"]</span></p>
         <div class="game-details_box">
-            <p class="game-guess_scope">You are guessing a number from the range: @ViewData["Scope"]</p>
-            <p class="game-guess">Your guess: @ViewData["Guess"]</p>
+            <p class="game-guess_scope">You are guessing a number from the range: <span class="controller_data">@ViewData["Scope"]</span></p>
+            <p class="game-guess">Your guess: <span class="controller_data">@ViewData["Guess"]</span></p>
         </div>
-        <p class=@ViewData["FeedbackCSSclass"] =>@ViewData["Feedback"]</p>
+        <p class="@("feedback_text " + ViewData["FeedbackCSSclass"])">@ViewData["Feedback"]</p>
     </div>
 </div>

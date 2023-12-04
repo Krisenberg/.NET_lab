@@ -1,9 +1,9 @@
-﻿.feedback_text {
+.feedback_text {
     margin-top: 35px;
     text-align: center;
     font-size: 30px;
     font-weight: 530;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .not_set_parameters {
@@ -35,8 +35,8 @@
 }
 
 .game-main_box {
-    width: 500px;
-    height: 300px;
+    width: 400px;
+    height: 250px;
     border-style: solid;
     opacity: 0.85;
     padding: 20px;
@@ -45,9 +45,13 @@
     background-color: rgb(228, 226, 233);
     border-color: rgb(190, 186, 197);
     border-radius: 10px;
-    font-family:'Times New Roman', Times, serif;
     font-size: 18px;
 }
+
+/*.solve-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+}*/
 
 .game-details_box {
     width: wrap;
@@ -56,7 +60,7 @@
     opacity: 0.85;
     padding: 0px 10px 0px 10px;
     border-width: 2px;
-    background-color: rgb(209, 192, 242);
-    border-color: rgb(155, 122, 214);
+    background-color: rgb(43, 70, 136);
+    border-color: rgb(133, 69, 80);
     border-radius: 20px;
 }
