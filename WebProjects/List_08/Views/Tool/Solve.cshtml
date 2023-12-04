@@ -1,8 +1,19 @@
 ﻿@{
     ViewBag.Title = "Solve";
 }
-
 <div class="solve-header">
     <h1>Quadratic equation solver</h1>
-    <p>Provided equation: @ViewBag.aParameter x &sup2; + @ViewBag.bParameter x + @ViewBag.cParameter = 0.</p>
+</div>
+
+<div class="solve-main_div">
+    <div class="solve-main_box">
+        <p class="solve-text">Provided equation:</p>
+        <div class="solve-equation_box">
+            @Html.Raw(@ViewBag.equationString)</p>
+        </div>
+        <p class="solve-text">Number of solutions: <span class="solve-solutions_number @ViewBag.cssClass">@Html.Raw(@ViewBag.solutionsNumber)</span></p>
+        <div class="solve-solutions_box @ViewBag.cssClass">
+            @Html.Raw(@ViewBag.solutions)</p>
+        </div>
+    </div>
 </div>

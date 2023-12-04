@@ -54,6 +54,21 @@ namespace List_08
                     defaults: new { controller = "Tool", action = "Solve"});
 
                 endpoints.MapControllerRoute(
+                    name: "GameSet",
+                    pattern: "Set,{scope}",
+                    defaults: new { controller = "Game", action = "Set" });
+
+                endpoints.MapControllerRoute(
+                    name: "GameDraw",
+                    pattern: "Draw",
+                    defaults: new { controller = "Game", action = "Draw" });
+
+                endpoints.MapControllerRoute(
+                    name: "GameGuess",
+                    pattern: "Guess,{userGuess}",
+                    defaults: new { controller = "Game", action = "Guess" });
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

@@ -1,0 +1,50 @@
+﻿.not_set_parameters {
+    color: darkred;
+}
+
+.too_high {
+    color: yellow;
+}
+
+.too_low {
+    color: lightcoral;
+}
+
+.correct {
+    color: darkgreen;
+}
+
+.game-main_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-main_box {
+    width: 350px;
+    height: 300px;
+    border-style: solid;
+    opacity: 0.85;
+    padding: 20px;
+    border-width: 8px;
+    margin: 20px;
+    background-color: rgb(213, 209, 221);
+    border-color: rgb(185, 180, 194);
+}
+
+/*.solve-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+}*/
+
+.solve-equation_box {
+    width: 200px;
+    height: 50px;
+    border-style: solid;
+    opacity: 0.85;
+    padding: 10px;
+    border-width: 2px;
+    margin: 10px;
+    background-color: rgb(196, 173, 239);
+    border-color: rgb(155, 122, 214);
+}
