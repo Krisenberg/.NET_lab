@@ -9,7 +9,7 @@
 }
 
 .one_solution {
-    color: rgb(43, 70, 136);
+    color: rgb(29, 80, 53);
 }
 
 .two_solutions {
@@ -58,18 +58,18 @@
 }
 
 .solve-solutions_box {
-    width: 200px;
+    width: wrap;
     height: 50px;
     border-style: solid;
     opacity: 0.85;
     padding: 10px;
     border-width: 2px;
+    justify-content: center;
     background-color: rgb(194, 233, 204);
     border-color: rgb(135, 184, 147);
     border-radius: 20px;
     text-align: center;
     margin-top: -10px;
-    margin-left: 40px;
     margin-bottom: 30px;
     font-size: 20px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

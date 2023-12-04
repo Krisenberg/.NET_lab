@@ -60,3 +60,13 @@
     border-color: rgb(155, 122, 214);
     border-radius: 20px;
 }
+
+.game-draw {
+    text-align: center;
+    justify-content: center;
+}
+
+.game-set {
+    text-align: center;
+    justify-content: center;
+}

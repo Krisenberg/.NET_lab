@@ -8,50 +8,54 @@ using System.Xml.Linq;
 
 namespace List_07
 {
-    internal class Task_4
+    public class StockData
     {
-        private class StockData
+        public string NasdaqName { get; set; }
+        public double NasdaqPrice { get; set; }
+        public double CurrencyRatioToUSD { get; private set; }
+        public string CurrencyShortname { get; private set; }
+        public StockData(string nasdaqName, double nasdaqPrice, double currencyRatioToUSD, string currencyShortname)
         {
-            public string NasdaqName { get; set; }
-            public double NasdaqPrice { get; set; }
-            public double CurrencyRatioToUSD { get; private set; }
-            public string CurrencyShortname { get; private set; }
-            public StockData(string nasdaqName, double nasdaqPrice, double currencyRatioToUSD, string currencyShortname)
-            {
-                this.NasdaqName = nasdaqName;
-                this.NasdaqPrice = nasdaqPrice;
-                this.CurrencyRatioToUSD = currencyRatioToUSD;
-                this.CurrencyShortname = currencyShortname;
-            }
-
-            public string ChangeCurrency(double newCurrencyRatioToUSD, string newCurrencyShortname)
-            {
-                string changeResult = $"Old value: {NasdaqPrice} {CurrencyShortname} --> New value: ";
-
-                NasdaqPrice = CalculatePriceInAnotherCurrency(newCurrencyRatioToUSD);
-                CurrencyRatioToUSD = newCurrencyRatioToUSD;
-                CurrencyShortname = newCurrencyShortname;
-                changeResult += $"{NasdaqPrice} {CurrencyShortname}";
-
-                return changeResult;
-            }
-
-            public double CalculatePriceInAnotherCurrency(double anotherCurrencyRatioToUSD)
-            {
-                double recalculateRatio = (CurrencyRatioToUSD / anotherCurrencyRatioToUSD);
-                return NasdaqPrice * recalculateRatio;
-            }
-
-            public override string ToString()
-            {
-                return $"{NasdaqName}: {NasdaqPrice} {CurrencyShortname}";
-            }
+            this.NasdaqName = nasdaqName;
+            this.NasdaqPrice = nasdaqPrice;
+            this.CurrencyRatioToUSD = currencyRatioToUSD;
+            this.CurrencyShortname = currencyShortname;
         }
 
+        public string ChangeCurrency(double newCurrencyRatioToUSD, string newCurrencyShortname)
+        {
+            string changeResult = $"Old value: {NasdaqPrice} {CurrencyShortname} --> New value: ";
+
+            NasdaqPrice = CalculatePriceInAnotherCurrency(newCurrencyRatioToUSD);
+            CurrencyRatioToUSD = newCurrencyRatioToUSD;
+            CurrencyShortname = newCurrencyShortname;
+            changeResult += $"{NasdaqPrice} {CurrencyShortname}";
+
+            return changeResult;
+        }
+
+        public double CalculatePriceInAnotherCurrency(double anotherCurrencyRatioToUSD)
+        {
+            double recalculateRatio = (CurrencyRatioToUSD / anotherCurrencyRatioToUSD);
+            return NasdaqPrice * recalculateRatio;
+        }
+
+        public override string ToString()
+        {
+            return $"{NasdaqName}: {NasdaqPrice} {CurrencyShortname}";
+        }
+    }
+
+    internal class Task_4
+    {
         public static void ReflectionDemo ()
         {
-            object stockNvidia = Activator.CreateInstance(typeof(StockData), new object[] { "NVDA", 467.19, 1.0, "USD" });
-            object stockIntel = Activator.CreateInstance(typeof(StockData), new object[] { "INTC", 43.74, 1.0, "USD" });
+            //object stockNvidia = Activator.CreateInstance(typeof(StockData), new object[] { "NVDA", 467.19, 1.0, "USD" });
+            //object stockIntel = Activator.CreateInstance(typeof(StockData), new object[] { "INTC", 43.74, 1.0, "USD" });
+
+            string classTypeName = "List_07.StockData";
+            object stockNvidia = Activator.CreateInstance(Type.GetType(classTypeName), new object[] { "NVDA", 467.19, 1.0, "USD" });
+            object stockIntel = Activator.CreateInstance(Type.GetType(classTypeName), new object[] { "INTC", 43.74, 1.0, "USD" });
 
             Console.WriteLine("Created stock items:");
             Console.WriteLine(stockNvidia);

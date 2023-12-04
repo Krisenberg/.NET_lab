@@ -10,14 +10,20 @@ namespace List_08.Controllers
         private static int _userGuessCounter;
         private static Random _random = new Random();
 
-        public void Set(int scope)
+        public IActionResult Set(int scope)
         {
             _scope = scope;
+            string scopeString = $"[0, {_scope.Value}]";
+            ViewData["Scope"] = scopeString;
+
+            return View();
         }
-        public void Draw()
+        public IActionResult Draw()
         {
             _randValue = (_scope is not null) ? _random.Next(0,_scope.Value) : null;
             _userGuessCounter = 0;
+
+            return View();
         }
         public IActionResult Guess(int userGuess)
         {
