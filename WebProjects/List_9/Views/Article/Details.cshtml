@@ -6,49 +6,68 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Article</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EAN13)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EAN13)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ExpirationDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ExpirationDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-    </dl>
-</div>
+<h4>Article</h4>
+<hr />
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Id)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Id)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.EAN13)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.EAN13)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Price)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Price)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.ExpirationDate)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.ExpirationDate)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Category)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Category)
+    </dd>
+</dl>
 <div>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     <a asp-action="Index">Back to List</a>
 </div>
+<div class="col-sm-4">
+    <h4>Category image</h4>
+    <hr />
+    @section RightBody
+    {
+        <img src="~/images/dairy.jpg" width="300" height="150" />
+    }
+</div>
+
+@{
+    string GetImagePath(List_09.ViewModels.Category category)
+    {
+        switch (category)
+        {
+            case List_09.ViewModels.Category.Dairy:
+                return "~/images/dairy.jpg"; // Path to the image for Beverage
+            default:
+                return "~/images/produce.jpg"; // Default image path
+        }
+    }
+}

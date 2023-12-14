@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace List_09.ViewModels
 {
-    public enum Category { Beverage, Bakery, Diary, Meat, Produce, Other }
+    public enum Category { Beverage, Bakery, Dairy, Meat, Produce, Other }
     public class Article
     {
         public int Id { get; set; }
@@ -20,21 +20,21 @@ namespace List_09.ViewModels
         [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
         public double Price { get; set; }
 
-        public string FormattedPrice
-        {
-            get 
-            {
-                CultureInfo culture = new CultureInfo("en-US");
-                return Price.ToString("0.00", culture);
-            }
-            set
-            {
-                if (double.TryParse(value, NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out double parsedPrice))
-                {
-                    Price = parsedPrice;
-                }
-            }
-        }
+        //public string FormattedPrice
+        //{
+        //    get 
+        //    {
+        //        CultureInfo culture = new CultureInfo("en-US");
+        //        return Price.ToString("0.00", culture);
+        //    }
+        //    set
+        //    {
+        //        if (double.TryParse(value, NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out double parsedPrice))
+        //        {
+        //            Price = parsedPrice;
+        //        }
+        //    }
+        //}
         //private string _PriceString;
         //public string PriceString
         //{

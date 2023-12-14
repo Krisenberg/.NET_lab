@@ -9,7 +9,7 @@ namespace List_09.DataContext
     {
         List<Article> articles = new List<Article>()
         {
-            new Article(0, "0001112223334", "Milk", 3.99, new DateTime(2023,12,16), Category.Diary),
+            new Article(0, "0001112223334", "Milk", 3.99, new DateTime(2023,12,16), Category.Dairy),
             new Article(1, "1234509876127", "Beef's meat", 24.99, new DateTime(2023,12,31), Category.Meat)
         };
         public void AddArticle(Article article)
