@@ -33,12 +33,17 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+    <div class="row">
+        <main role="main" class="col-sm-8">
             @RenderBody()
         </main>
+        <div class="col-sm-4 pr-5">
+            @RenderSection("RightBody", required: false)
+        </div>
     </div>
+</div>
 
-    @RenderSection("RightBody", required: false)
+    @* @RenderSection("RightBody", required: false) *@
 
     <footer class="border-top footer text-muted">
         <div class="container">
