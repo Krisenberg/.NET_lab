@@ -1,14 +1,22 @@
-﻿namespace List_10.Models
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace List_10.Models
 {
     public class Category
     {
         public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
-        public Category(int id, string name)
+        public Category() { }
+
+        public Category(string name)
         {
-            Id = id;
             Name = name;
         }
+
+        public ICollection<Article> Articles { get; set; }
     }
 }

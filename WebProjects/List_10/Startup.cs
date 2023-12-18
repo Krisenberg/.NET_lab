@@ -1,11 +1,14 @@
+using List_10.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +18,7 @@ namespace List_10
     {
         public Startup(IConfiguration configuration)
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
             Configuration = configuration;
         }
 
@@ -24,6 +28,8 @@ namespace List_10
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContextPool<ShopDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ShopDb")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
