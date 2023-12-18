@@ -1,0 +1,12 @@
+﻿@* @model Tuple<List<Category>, List<Article>> *@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            @RenderSection("CategorySelection", required: true)
+        </div>
+        <div class="col-sm-8">
+            @RenderSection("ProductsList", required: false)
+        </div>
+    </div>
+</div>

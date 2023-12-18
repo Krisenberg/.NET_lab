@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "List_08", "List_08\List_08.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "List_09", "List_9\List_09.csproj", "{AEC3D4AD-1FDB-41F3-A909-97A036ADE0ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "List_10", "List_10\List_10.csproj", "{587EA74C-47FF-4462-9E05-67D65D86CC6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "List_10", "List_10\List_10.csproj", "{587EA74C-47FF-4462-9E05-67D65D86CC6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
