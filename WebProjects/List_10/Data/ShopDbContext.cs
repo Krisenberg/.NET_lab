@@ -14,14 +14,13 @@ namespace List_10.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Article>()
-                .HasOne(a => a.Category)                  // Article has one Category
-                .WithMany(c => c.Articles)                // Category has many Articles
-                .HasForeignKey(a => a.CategoryId);        // Define the foreign key relationship
+                .HasOne(a => a.Category)
+                .WithMany(c => c.Articles)
+                .HasForeignKey(a => a.CategoryId);
 
-            // Optionally, if you want to configure the relationship in Category entity too
             modelBuilder.Entity<Category>()
-                .HasMany(c => c.Articles)                 // Category has many Articles
-                .WithOne(a => a.Category)                 // Article has one Category
+                .HasMany(c => c.Articles)
+                .WithOne(a => a.Category)
                 .HasForeignKey(a => a.CategoryId);
 
             modelBuilder.Seed();

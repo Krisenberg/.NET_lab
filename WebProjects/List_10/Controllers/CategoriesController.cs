@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using List_10.Data;
 using List_10.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace List_10.Controllers
 {
     public class CategoriesController : Controller
     {
         private readonly ShopDbContext _context;
+        private IHostingEnvironment _hostingEnvironment;
 
-        public CategoriesController(ShopDbContext context)
+        public CategoriesController(ShopDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Categories
@@ -140,6 +144,20 @@ namespace List_10.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var category = await _context.Categories.FindAsync(id);
+
+            var articles = _context.Articles.Where(a => a.CategoryId == id);
+            foreach (var article in articles)
+            {
+                if (article.ImagePath != null)
+                {
+                    string absolutePath = Path.Combine(_hostingEnvironment.WebRootPath, article.ImagePath.TrimStart('~', '/'));
+                    if (System.IO.File.Exists(absolutePath))
+                    {
+                        System.IO.File.Delete(absolutePath);
+                    }
+                }
+            }
+
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

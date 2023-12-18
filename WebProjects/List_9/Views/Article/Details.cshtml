@@ -50,14 +50,6 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     <a asp-action="Index">Back to List</a>
 </div>
-@* <div class="col-sm-4">
-    <h4>Category image</h4>
-    <hr />
-    @section RightBody
-    {
-        <img src="~/images/dairy.jpg" width="300" height="150" />
-    }
-</div> *@
 
 @section RightBody
 {
@@ -81,13 +73,13 @@
             case List_09.ViewModels.Category.Beverage:
                 return "~/images/beverage.jpg";
             case List_09.ViewModels.Category.Dairy:
-                return "~/images/dairy.jpg"; // Path to the image for Beverage
+                return "~/images/dairy.jpg";
             case List_09.ViewModels.Category.Meat:
                 return "~/images/meat.jpg";
             case List_09.ViewModels.Category.Produce:
                 return "~/images/produce.jpg";
             default:
-                return "~/images/other.jpg"; // Default image path
+                return "~/images/other.jpg";
         }
     }
 }

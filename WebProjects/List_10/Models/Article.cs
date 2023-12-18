@@ -18,7 +18,6 @@ namespace List_10.Models
         public string Name { get; set; }
 
         [Required]
-        //[RegularExpression(@"^\d+(\,\d{1,2})?$")]
         [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
         public double Price { get; set; }
 
@@ -33,7 +32,6 @@ namespace List_10.Models
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
 
-        // Parameterless constructor required by EF Core
         public Article()
         {
         }

@@ -16,36 +16,9 @@ namespace List_09.ViewModels
         [MaxLength(20, ErrorMessage = "Article's name must be at most 20 characters long")]
         public string Name { get; set; }
         [Required]
-        //[RegularExpression(@"^\d+(\,\d{1,2})?$")]
         [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
         public double Price { get; set; }
 
-        //public string FormattedPrice
-        //{
-        //    get 
-        //    {
-        //        CultureInfo culture = new CultureInfo("en-US");
-        //        return Price.ToString("0.00", culture);
-        //    }
-        //    set
-        //    {
-        //        if (double.TryParse(value, NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out double parsedPrice))
-        //        {
-        //            Price = parsedPrice;
-        //        }
-        //    }
-        //}
-        //private string _PriceString;
-        //public string PriceString
-        //{
-        //    get { return _PriceString; }
-        //    set 
-        //    { 
-        //        _PriceString = value;
-        //        double.TryParse(_PriceString.Replace(',', '.'), out double result);
-        //        Price = result;
-        //    }
-        //}
         [DataType(DataType.DateTime)]
         [Required]
         [Display(Name="Expiry date")]

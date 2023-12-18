@@ -58,39 +58,6 @@ namespace List_10.Controllers
             return View();
         }
 
-        // POST: Articles/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("EAN13,Name,Price,ImageFile,CategoryId")] Article article)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (article.ImageFile.Length > 0)
-        //        {
-        //            string uniqueFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + "_" + Path.GetFileName(article.ImageFile.FileName);
-
-        //            //string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "upload");
-        //            string filePath = Path.Combine(_hostingEnvironment.WebRootPath, uniqueFileName);
-
-        //            article.ImagePath = filePath;
-
-        //            //var stream = new FileStream(uploadFolder, FileMode.Create);
-        //            //article.ImageFile.CopyTo(stream);
-        //            using (Stream fileStream = new FileStream(filePath, FileMode.Create))
-        //            {
-        //                await article.ImageFile.CopyToAsync(fileStream);
-        //            }
-        //        }
-
-        //        _context.Add(article);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", article.CategoryId);
-        //    return View(article);
-        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EAN13,Name,Price,ImageFile,CategoryId")] Article article)
@@ -103,16 +70,13 @@ namespace List_10.Controllers
                     string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "upload");
                     string filePath = Path.Combine(uploadFolder, uniqueFileName);
 
-                    article.ImagePath = "~/upload/" + uniqueFileName; // Update the ImagePath property
+                    article.ImagePath = "~/upload/" + uniqueFileName;
 
-                    // Save the uploaded file
                     using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         await article.ImageFile.CopyToAsync(fileStream);
                     }
                 }
-                //int articleID = _context.Articles.Max(a => a.Id) + 1;
-                //article.Id = articleID;
                 _context.Add(article);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

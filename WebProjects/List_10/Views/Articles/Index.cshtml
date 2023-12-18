@@ -45,8 +45,6 @@
             <td>
                 @if (item.ImagePath != null)
                 {
-                    @* var uri = new Uri(item.ImagePath);
-                    var converted = uri.AbsoluteUri; *@
                     <img id="uploadedImage" src="@Url.Content(@item.ImagePath)" alt="Uploaded Image" height="50" />
                 }
                 else

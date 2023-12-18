@@ -41,9 +41,6 @@ namespace List_09.DataContext
 
         public void UpdateArticle(Article updatedArticle)
         {
-            //Article articleToUpdate = articles.FirstOrDefault(art => (art.Id == updatedArticle.Id));
-            //articles = articles.Select(art => (art.Id == updatedArticle.Id) ? updatedArticle : art).ToList();
-
             if (articles.ContainsKey(updatedArticle.Id))
             {
                 articles[updatedArticle.Id] = updatedArticle;

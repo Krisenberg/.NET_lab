@@ -15,11 +15,6 @@ namespace List_9
     {
         public static void Main(string[] args)
         {
-            //var clone = Thread.CurrentThread.CurrentCulture.Clone() as CultureInfo;
-            //clone.NumberFormat.NumberDecimalSeparator = ".";
-
-            //Thread.CurrentThread.CurrentCulture = clone;
-            //Thread.CurrentThread.CurrentUICulture = clone;
             CreateHostBuilder(args).Build().Run();
         }
 
