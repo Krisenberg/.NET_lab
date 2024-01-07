@@ -23,6 +23,7 @@ namespace List_08
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession(); //It can be expanded - we can specify cookies settings
             services.AddControllersWithViews();
         }
 
@@ -45,6 +46,8 @@ namespace List_08
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,27 +1,46 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace List_08.Controllers
 {
     public class GameController : Controller
     {
-        private static int? _scope = null;
-        private static int? _randValue = null;
-        private static int _userGuessCounter;
-        private static Random _random = new Random();
+        //private static int? _scope = null;
+        //private static int? _randValue = null;
+        //private static int _userGuessCounter;
+        //private static Random _random = new Random();
+        private int? _scope;
+        private int? _randValue;
+        private int? _userGuessCounter;
+        private Random _random = new Random();
 
         public IActionResult Set(int scope)
         {
-            _scope = scope;
-            string scopeString = $"[0, {_scope.Value}]";
+            //_scope = scope;
+            HttpContext.Session.SetInt32("scope", scope);
+            string scopeString = $"[0, {scope}]";
             ViewData["Scope"] = scopeString;
+            HttpContext.Session.Remove("randValue");
 
             return View();
         }
         public IActionResult Draw()
         {
+            string viewMessage = "You must set the scope before drawing the target number.";
+            _scope = HttpContext.Session.GetInt32("scope");
             _randValue = (_scope is not null) ? _random.Next(0,_scope.Value) : null;
-            _userGuessCounter = 0;
+            if (_randValue.HasValue) 
+            { 
+                HttpContext.Session.SetInt32("randValue", _randValue.Value);
+                HttpContext.Session.SetInt32("userGuessCounter", 0);
+                viewMessage = "The target number has been drawn. You can start guessing!";
+            }
+            ViewData["Message"] = viewMessage;
+            //int? userGuessCounter = HttpContext.Session.GetInt32("userGuessCounter");
+            //if (userGuessCounter == null) { userGuessCounter = 0; }
+            //HttpContext.Session.SetInt32("userGuessCounter", userGuessCounter.Value);
 
             return View();
         }
@@ -31,6 +50,7 @@ namespace List_08.Controllers
             string feedback;
             string feedbackCSSclass;
             string scope;
+            _randValue = HttpContext.Session.GetInt32("randValue");
 
             if (_randValue is null)
             {
@@ -41,14 +61,17 @@ namespace List_08.Controllers
             }
             else
             {
+                _userGuessCounter = HttpContext.Session.GetInt32("userGuessCounter");
+                HttpContext.Session.SetInt32("userGuessCounter", _userGuessCounter.Value + 1);
                 ViewData["GuessCounter"] = (++_userGuessCounter);
 
-                feedback = (userGuess > _randValue) ? "Your guess is too high!" :
-                ((userGuess < _randValue) ? "Your guess is too low!" : "Your guess is correct!");
+                feedback = (userGuess > _randValue.Value) ? "Your guess is too high!" :
+                ((userGuess < _randValue.Value) ? "Your guess is too low!" : "Your guess is correct!");
 
-                feedbackCSSclass = (userGuess > _randValue) ? "too_high" :
-                ((userGuess < _randValue) ? "too_low" : "correct");
+                feedbackCSSclass = (userGuess > _randValue.Value) ? "too_high" :
+                ((userGuess < _randValue.Value) ? "too_low" : "correct");
 
+                _scope = HttpContext.Session.GetInt32("scope");
                 scope = $"[0, {_scope.Value}]";
             }
             ViewData["Feedback"] = feedback;
@@ -57,9 +80,10 @@ namespace List_08.Controllers
             ViewData["Guess"] = $"{userGuess}";
 
 
-            if (userGuess == _randValue)
+            if (_randValue.HasValue && userGuess == _randValue.Value)
             {
-                _randValue = null;
+                HttpContext.Session.Remove("randValue");
+                //_randValue = null;
             }
             return View();
         }
