@@ -38,7 +38,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Articles[0].Category)
                     </th>
-                    <th></th>
+                    <th>
+                        Add to cart
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -66,6 +68,13 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Category.Name)
+                        </td>
+                        <td>
+                            <form asp-action="ShowProducts" method="post">
+                                <input asp-for="ItemAddedToCartId" type="hidden" value="@item.Id" />
+                                @* <button asp-action="ShowProducts" class="btn"><img id="cartIcon" src="~/image/cart_icon.png" alt="Cart icon" height="40" /></button> *@
+                                <button type="submit" class="btn"><img id="cartIcon" src="~/image/cart_icon.png" alt="Cart icon" height="40" /></button>
+                            </form>
                         </td>
                     </tr>
                 }

@@ -173,6 +173,8 @@ namespace List_10.Controllers
                 }
             }
 
+            Response.Cookies.Delete(article.Id.ToString());
+
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

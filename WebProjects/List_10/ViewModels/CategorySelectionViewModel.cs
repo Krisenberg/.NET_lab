@@ -8,5 +8,6 @@ namespace List_10.ViewModels
         public int SelectedCategoryId { get; set; }
         public List<Category> Categories { get; set; }
         public List<Article> Articles { get; set; }
+        public int? ItemAddedToCartId { get; set; }
     }
 }

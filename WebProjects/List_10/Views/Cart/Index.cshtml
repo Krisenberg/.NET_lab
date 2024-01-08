@@ -1,0 +1,154 @@
+﻿@* @model List_10.ViewModels.CartViewModel *@
+@model List_10.ViewModels.CartViewModel
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+@if (Model.cartItems != null && Model.cartItems.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @* @Html.DisplayNameFor(model => model.Articles[0].EAN13) *@
+                    @Html.DisplayNameFor(model => model.cartItems[0].EAN13)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cartItems[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cartItems[0].Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cartItems[0].ImagePath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cartItems[0].CategoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cartItems[0].Quantity)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.cartItems)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EAN13)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @if (item.ImagePath != null)
+                        {
+                            <img id="uploadedImage" src="@Url.Content(@item.ImagePath)" alt="Uploaded Image" height="50" />
+                        }
+                        else
+                        {
+                            <img id="uploadedImage" src="~/image/no_image.png" alt="No-image Image" height="40" />
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        <div class="row-container">
+                            @* <a asp-action="DecreaseQuantity" asp-route-id="@item.Id">
+                                <img id="minusIcon" src="~/image/minus_icon.png" alt="Minus icon" width="15" />
+                            </a> *@
+                            <a href="#" onclick="decreaseQuantity(@item.Id)">
+                                <img id="minusIcon" src="~/image/minus_icon.png" alt="Minus icon" width="15" />
+                            </a>
+                            @* <form asp-action="DecreaseQuantity" method="post">
+                    <input asp-for="IdDecreaseItemQuantity" type="hidden" value="@item.Id" />
+                    <button type="submit" class="btn"><img id="minusIcon" src="~/image/minus_icon.png" alt="Minus icon" width="40" /></button>
+                    </form> *@
+                            <p>@item.Quantity</p>
+                            @* <a asp-action="IncreaseQuantity" asp-route-id="@item.Id">
+                                <img id="plusIcon" src="~/image/plus_icon.png" alt="Plus icon" width="15" />
+                            </a> *@
+                            <a href="#" onclick="increaseQuantity(@item.Id)">
+                                <img id="plusIcon" src="~/image/plus_icon.png" alt="Plus icon" width="15" />
+                            </a>
+                            @* <form asp-action="IncreaseQuantity" method="post">
+                    <input asp-for="IdIncreaseItemQuantity" type="hidden" value="@item.Id" />
+                    <button type="submit" class="btn"><img id="minusIcon" src="~/image/plus_icon.png" alt="Plus icon" width="40" /></button>
+                    </form> *@
+                        </div>
+                    </td>
+                    <td>
+                        @* <a asp-action="DeleteItem" asp-route-id="@item.Id">
+                            <img id="deleteIcon" src="~/image/delete_icon.png" alt="Delete icon" height="30" />
+                        </a> *@
+                        <a href="#" onclick="eraseCookie(@item.Id.ToString())">
+                            <img id="deleteIcon" src="~/image/delete_icon.png" alt="Delete icon" height="30" />
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <p>TOTAL:</p>
+                </td>
+                <td>
+                    <p>@Math.Round(Model.cartValue, 2)</p>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <h2>Your cart is empty!</h2>
+}
+
+<script>
+    function decreaseQuantity(id) {
+        var idStr = id.toString();
+        var currentQuantity = parseInt(getCookie(idStr)) || 0;
+        if (currentQuantity > 1) {
+            currentQuantity--;
+            setCookie(idStr, currentQuantity, 7); // Decrease the quantity by 1 and set the cookie again
+            // Optionally update the UI or perform other actions related to the decreased quantity
+        } else {
+            eraseCookie(idStr);
+        }
+    }
+    function increaseQuantity(id) {
+        var idStr = id.toString();
+        var currentQuantity = parseInt(getCookie(idStr)) || 0;
+        currentQuantity++;
+        setCookie(idStr, currentQuantity, 7);
+    }
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setDate(date.getDate() + days);
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+</script>

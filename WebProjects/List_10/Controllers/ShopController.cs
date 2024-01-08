@@ -8,26 +8,56 @@ using Microsoft.EntityFrameworkCore;
 using List_10.Data;
 using List_10.Models;
 using List_10.ViewModels;
+using System.Net;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
 
 namespace List_10.Controllers
 {
     public class ShopController : Controller
     {
         private readonly ShopDbContext _context;
+        private CategorySelectionViewModel model;
 
         public ShopController(ShopDbContext context)
         {
             _context = context;
+            model = new CategorySelectionViewModel
+            {
+                SelectedCategoryId = -1
+            };
         }
 
         public async Task<IActionResult> Menu()
         {
             var categories = await _context.Categories.ToListAsync();
-            var model = new CategorySelectionViewModel
+            model.Categories = categories;
+
+            int? selectedCatIdOptional = HttpContext.Session.GetInt32("selectedCategoryId");
+            if (selectedCatIdOptional.HasValue && selectedCatIdOptional.Value != model.SelectedCategoryId)
             {
-                Categories = categories,
-                SelectedCategoryId = categories[0].Id
-            };
+                HttpContext.Session.SetInt32("selectedCategoryId", model.SelectedCategoryId);
+            }
+            else
+            {
+                model.SelectedCategoryId = categories[0].Id;
+                HttpContext.Session.SetInt32("selectedCategoryId", categories[0].Id);
+            }
+            //if (model.SelectedCategoryId == -1)
+            //{
+            //    int? selectedCatIdOptional = HttpContext.Session.GetInt32("selectedCategoryId");
+            //    if (selectedCatIdOptional.HasValue)
+            //        model.SelectedCategoryId = selectedCatIdOptional.Value;
+            //    else
+            //    {
+            //        model.SelectedCategoryId = categories[0].Id;
+            //        HttpContext.Session.SetInt32("selectedCategoryId", categories[0].Id);
+            //    }
+            //}
+            //else
+            //{
+            //    HttpContext.Session.SetInt32("selectedCategoryId", model.SelectedCategoryId);
+            //}
             ViewData["Categories"] = new SelectList(categories, "Id", "Name", model.SelectedCategoryId);
             return View(model);
         }
@@ -37,6 +67,25 @@ namespace List_10.Controllers
         {
 
             var categories = await _context.Categories.ToListAsync();
+            model.Categories = categories;
+
+            int? selectedCatIdOptional = HttpContext.Session.GetInt32("selectedCategoryId");
+            if (selectedCatIdOptional.HasValue && model.ItemAddedToCartId.HasValue)
+            {
+                model.SelectedCategoryId = selectedCatIdOptional.Value;
+            }
+            else
+            {
+                if (selectedCatIdOptional.HasValue && selectedCatIdOptional.Value != model.SelectedCategoryId)
+                {
+                    HttpContext.Session.SetInt32("selectedCategoryId", model.SelectedCategoryId);
+                }
+                else
+                {
+                    model.SelectedCategoryId = categories[0].Id;
+                    HttpContext.Session.SetInt32("selectedCategoryId", categories[0].Id);
+                }
+            }
 
             var articles = await _context.Articles
                 .Include(a => a.Category)
@@ -47,7 +96,46 @@ namespace List_10.Controllers
 
             ViewData["Categories"] = new SelectList(categories, "Id", "Name", model.SelectedCategoryId);
 
+            if (model.ItemAddedToCartId.HasValue)
+            {
+                CookieOptions options = new CookieOptions();
+                options.Expires = DateTime.Now.AddDays(7);
+                string key = model.ItemAddedToCartId.Value.ToString();
+                if (Request.Cookies[key] != null)
+                {
+                    int value = Int32.Parse(Request.Cookies[key]) + 1;
+                    Response.Cookies.Append(key, value.ToString(), options);
+                }
+                else
+                {
+                    Response.Cookies.Append(key, "1", options);
+                }
+                model.ItemAddedToCartId = null;
+            }
+
             return View("Menu", model);
         }
+
+        //public IActionResult AddItemToCart(CategorySelectionViewModel model)
+        //{
+        //    if (model.ItemAddedToCartId.HasValue)
+        //    {
+        //        CookieOptions options = new CookieOptions();
+        //        options.Expires = DateTime.Now.AddDays(7);
+        //        string key = model.ItemAddedToCartId.Value.ToString();
+        //        if (Request.Cookies[key] != null)
+        //        {
+        //            int value = Int32.Parse(Request.Cookies[key]) + 1;
+        //            Response.Cookies.Append(key, value.ToString(), options);
+        //            model.ItemAddedToCartId = null;
+        //        } 
+        //        else
+        //        {
+        //            Response.Cookies.Append(key, "1", options);
+        //        }
+        //        Response.Cookies.Append("Dupa", "Dupa123", options);
+        //    }
+        //    return RedirectToAction("ShowProducts");
+        //}
     }
 }

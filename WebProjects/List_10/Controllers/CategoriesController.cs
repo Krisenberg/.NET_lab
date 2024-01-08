@@ -156,6 +156,7 @@ namespace List_10.Controllers
                         System.IO.File.Delete(absolutePath);
                     }
                 }
+                Response.Cookies.Delete(article.Id.ToString());
             }
 
             _context.Categories.Remove(category);

@@ -27,6 +27,10 @@ namespace List_10
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(); // Optionally it can be configured
+
             services.AddControllersWithViews();
             services.AddDbContextPool<ShopDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ShopDb")));
@@ -51,6 +55,8 @@ namespace List_10
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
