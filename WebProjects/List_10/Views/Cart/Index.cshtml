@@ -7,6 +7,7 @@
 
 @if (Model.cartItems != null && Model.cartItems.Count() > 0)
 {
+    <h2>Your shopping bag</h2>
     <table class="table">
         <thead>
             <tr>
@@ -62,14 +63,14 @@
                             <a asp-action="DecreaseQuantity" asp-route-id="@item.Id">
                                 <img id="minusIcon" src="~/image/minus_icon.png" alt="Minus icon" width="15" />
                             </a>
-@*                             <a href="#" onclick="decreaseQuantity(@item.Id)">
+                            @* <a href="#" onclick="decreaseQuantity(@item.Id)">
                                 <img id="minusIcon" src="~/image/minus_icon.png" alt="Minus icon" width="15" />
                             </a> *@
                             <p>@item.Quantity</p>
                             <a asp-action="IncreaseQuantity" asp-route-id="@item.Id">
                                 <img id="plusIcon" src="~/image/plus_icon.png" alt="Plus icon" width="15" />
                             </a>
-@*                             <a href="#" onclick="increaseQuantity(@item.Id)">
+                            @* <a href="#" onclick="increaseQuantity(@item.Id)">
                                 <img id="plusIcon" src="~/image/plus_icon.png" alt="Plus icon" width="15" />
                             </a> *@
                         </div>
@@ -85,13 +86,18 @@
                 </tr>
             }
         </tbody>
-        <tfoot>
+        <tfoot class="table-footer">
             <tr>
                 <td>
                     <p>TOTAL:</p>
                 </td>
                 <td>
                     <p>@Math.Round(Model.cartValue, 2)</p>
+                </td>
+                <td>
+                    <a asp-action="Summary">
+                        <p>Summary</p>
+                    </a>
                 </td>
             </tr>
         </tfoot>

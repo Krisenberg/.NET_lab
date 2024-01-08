@@ -40,24 +40,12 @@ namespace List_10.Controllers
             }
             else
             {
-                model.SelectedCategoryId = categories[0].Id;
-                HttpContext.Session.SetInt32("selectedCategoryId", categories[0].Id);
+                if (!selectedCatIdOptional.HasValue)
+                {
+                    model.SelectedCategoryId = categories[0].Id;
+                    HttpContext.Session.SetInt32("selectedCategoryId", categories[0].Id);
+                }
             }
-            //if (model.SelectedCategoryId == -1)
-            //{
-            //    int? selectedCatIdOptional = HttpContext.Session.GetInt32("selectedCategoryId");
-            //    if (selectedCatIdOptional.HasValue)
-            //        model.SelectedCategoryId = selectedCatIdOptional.Value;
-            //    else
-            //    {
-            //        model.SelectedCategoryId = categories[0].Id;
-            //        HttpContext.Session.SetInt32("selectedCategoryId", categories[0].Id);
-            //    }
-            //}
-            //else
-            //{
-            //    HttpContext.Session.SetInt32("selectedCategoryId", model.SelectedCategoryId);
-            //}
             ViewData["Categories"] = new SelectList(categories, "Id", "Name", model.SelectedCategoryId);
             return View(model);
         }
@@ -82,8 +70,11 @@ namespace List_10.Controllers
                 }
                 else
                 {
-                    model.SelectedCategoryId = categories[0].Id;
-                    HttpContext.Session.SetInt32("selectedCategoryId", categories[0].Id);
+                    if (!selectedCatIdOptional.HasValue)
+                    {
+                        model.SelectedCategoryId = categories[0].Id;
+                        HttpContext.Session.SetInt32("selectedCategoryId", categories[0].Id);
+                    }
                 }
             }
 
@@ -115,27 +106,5 @@ namespace List_10.Controllers
 
             return View("Menu", model);
         }
-
-        //public IActionResult AddItemToCart(CategorySelectionViewModel model)
-        //{
-        //    if (model.ItemAddedToCartId.HasValue)
-        //    {
-        //        CookieOptions options = new CookieOptions();
-        //        options.Expires = DateTime.Now.AddDays(7);
-        //        string key = model.ItemAddedToCartId.Value.ToString();
-        //        if (Request.Cookies[key] != null)
-        //        {
-        //            int value = Int32.Parse(Request.Cookies[key]) + 1;
-        //            Response.Cookies.Append(key, value.ToString(), options);
-        //            model.ItemAddedToCartId = null;
-        //        } 
-        //        else
-        //        {
-        //            Response.Cookies.Append(key, "1", options);
-        //        }
-        //        Response.Cookies.Append("Dupa", "Dupa123", options);
-        //    }
-        //    return RedirectToAction("ShowProducts");
-        //}
     }
 }

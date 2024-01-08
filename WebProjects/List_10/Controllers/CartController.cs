@@ -104,80 +104,30 @@ namespace List_10.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> DecreaseQuantity(CartViewModel model)
-        //{
-        //    var shopArticles = await _context.Articles.ToListAsync();
-        //    var cartArticles = new List<Models.Article>();
-        //    var articlesQuantities = new Dictionary<int, int>();
+        public async Task<IActionResult> Summary()
+        {
+            var shopArticles = await _context.Articles.ToListAsync();
+            var cartItems = new List<CartItem>();
+            double totalValue = 0;
 
-        //    foreach (var article in shopArticles)
-        //    {
-        //        string quantity = Request.Cookies[article.Id.ToString()];
-        //        if (quantity != null)
-        //        {
-        //            cartArticles.Add(article);
-        //            articlesQuantities.Add(article.Id, Int32.Parse(quantity));
-        //        }
-        //    }
+            foreach (var article in shopArticles)
+            {
+                string quantity = Request.Cookies[article.Id.ToString()];
+                if (quantity != null)
+                {
+                    var art = _context.Articles
+                        .Include(a => a.Category)
+                        .FirstOrDefault(a => a.Id == article.Id);
+                    string catName = art.Category.Name;
+                    CartItem item = new CartItem(article, catName, Int32.Parse(quantity));
+                    cartItems.Add(item);
+                    totalValue += (item.Quantity * item.Price);
+                }
+            }
+            model.cartItems = cartItems;
+            model.cartValue = totalValue;
 
-        //    model.Articles = cartArticles;
-        //    model.ArticlesQuantities = articlesQuantities;
-        //    if (model.IdDecreaseItemQuantity.HasValue && model.ArticlesQuantities[model.IdDecreaseItemQuantity.Value] > 1)
-        //    {
-        //        int newQuant = model.ArticlesQuantities[model.IdDecreaseItemQuantity.Value] - 1;
-        //        model.ArticlesQuantities[model.IdDecreaseItemQuantity.Value] = newQuant;
-        //        CookieOptions options = new CookieOptions();
-        //        options.Expires = DateTime.Now.AddDays(7);
-        //        Response.Cookies.Append(model.IdDecreaseItemQuantity.Value.ToString(), newQuant.ToString(), options);
-        //    }
-        //    if (model.IdDecreaseItemQuantity.HasValue && model.ArticlesQuantities[model.IdDecreaseItemQuantity.Value] == 1)
-        //    {
-        //        int newQuant = model.ArticlesQuantities[model.IdDecreaseItemQuantity.Value] - 1;
-        //        model.ArticlesQuantities.Remove(model.IdDecreaseItemQuantity.Value);
-        //        Response.Cookies.Delete(model.IdDecreaseItemQuantity.Value.ToString());
-
-        //        var article = await _context.Articles
-        //            .Include(a => a.Category)
-        //            .Where(a => a.CategoryId == model.IdDecreaseItemQuantity.Value)
-        //            .ToListAsync();
-
-        //        model.Articles.Remove(article.FirstOrDefault());
-        //    }
-
-        //    model.IdDecreaseItemQuantity = null;
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> IncreaseQuantity(CartViewModel model)
-        //{
-        //    var shopArticles = await _context.Articles.ToListAsync();
-        //    var cartArticles = new List<Models.Article>();
-        //    var articlesQuantities = new Dictionary<int, int>();
-
-        //    foreach (var article in shopArticles)
-        //    {
-        //        string quantity = Request.Cookies[article.Id.ToString()];
-        //        if (quantity != null)
-        //        {
-        //            cartArticles.Add(article);
-        //            articlesQuantities.Add(article.Id, Int32.Parse(quantity));
-        //        }
-        //    }
-
-        //    model.Articles = cartArticles;
-        //    model.ArticlesQuantities = articlesQuantities;
-        //    if (model.IdIncreaseItemQuantity.HasValue)
-        //    {
-        //        int newQuant = model.ArticlesQuantities[model.IdIncreaseItemQuantity.Value] + 1;
-        //        model.ArticlesQuantities[model.IdIncreaseItemQuantity.Value] = newQuant;
-        //        CookieOptions options = new CookieOptions();
-        //        options.Expires = DateTime.Now.AddDays(7);
-        //        Response.Cookies.Append(model.IdIncreaseItemQuantity.Value.ToString(), newQuant.ToString(), options);
-        //    }
-        //    model.IdIncreaseItemQuantity = null;
-        //    return RedirectToAction(nameof(Index));
-        //}
+            return View(model);
+        }
     }
 }
