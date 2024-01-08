@@ -11,7 +11,6 @@
         <thead>
             <tr>
                 <th>
-                    @* @Html.DisplayNameFor(model => model.Articles[0].EAN13) *@
                     @Html.DisplayNameFor(model => model.cartItems[0].EAN13)
                 </th>
                 <th>
@@ -60,36 +59,28 @@
                     </td>
                     <td>
                         <div class="row-container">
-                            @* <a asp-action="DecreaseQuantity" asp-route-id="@item.Id">
-                                <img id="minusIcon" src="~/image/minus_icon.png" alt="Minus icon" width="15" />
-                            </a> *@
-                            <a href="#" onclick="decreaseQuantity(@item.Id)">
+                            <a asp-action="DecreaseQuantity" asp-route-id="@item.Id">
                                 <img id="minusIcon" src="~/image/minus_icon.png" alt="Minus icon" width="15" />
                             </a>
-                            @* <form asp-action="DecreaseQuantity" method="post">
-                    <input asp-for="IdDecreaseItemQuantity" type="hidden" value="@item.Id" />
-                    <button type="submit" class="btn"><img id="minusIcon" src="~/image/minus_icon.png" alt="Minus icon" width="40" /></button>
-                    </form> *@
+@*                             <a href="#" onclick="decreaseQuantity(@item.Id)">
+                                <img id="minusIcon" src="~/image/minus_icon.png" alt="Minus icon" width="15" />
+                            </a> *@
                             <p>@item.Quantity</p>
-                            @* <a asp-action="IncreaseQuantity" asp-route-id="@item.Id">
-                                <img id="plusIcon" src="~/image/plus_icon.png" alt="Plus icon" width="15" />
-                            </a> *@
-                            <a href="#" onclick="increaseQuantity(@item.Id)">
+                            <a asp-action="IncreaseQuantity" asp-route-id="@item.Id">
                                 <img id="plusIcon" src="~/image/plus_icon.png" alt="Plus icon" width="15" />
                             </a>
-                            @* <form asp-action="IncreaseQuantity" method="post">
-                    <input asp-for="IdIncreaseItemQuantity" type="hidden" value="@item.Id" />
-                    <button type="submit" class="btn"><img id="minusIcon" src="~/image/plus_icon.png" alt="Plus icon" width="40" /></button>
-                    </form> *@
+@*                             <a href="#" onclick="increaseQuantity(@item.Id)">
+                                <img id="plusIcon" src="~/image/plus_icon.png" alt="Plus icon" width="15" />
+                            </a> *@
                         </div>
                     </td>
                     <td>
-                        @* <a asp-action="DeleteItem" asp-route-id="@item.Id">
-                            <img id="deleteIcon" src="~/image/delete_icon.png" alt="Delete icon" height="30" />
-                        </a> *@
-                        <a href="#" onclick="eraseCookie(@item.Id.ToString())">
+                        <a asp-action="DeleteItem" asp-route-id="@item.Id">
                             <img id="deleteIcon" src="~/image/delete_icon.png" alt="Delete icon" height="30" />
                         </a>
+                        @* <a href="#" onclick="eraseCookie(@item.Id.ToString())">
+                            <img id="deleteIcon" src="~/image/delete_icon.png" alt="Delete icon" height="30" />
+                        </a> *@
                     </td>
                 </tr>
             }
@@ -117,8 +108,7 @@ else
         var currentQuantity = parseInt(getCookie(idStr)) || 0;
         if (currentQuantity > 1) {
             currentQuantity--;
-            setCookie(idStr, currentQuantity, 7); // Decrease the quantity by 1 and set the cookie again
-            // Optionally update the UI or perform other actions related to the decreased quantity
+            setCookie(idStr, currentQuantity, 7);
         } else {
             eraseCookie(idStr);
         }

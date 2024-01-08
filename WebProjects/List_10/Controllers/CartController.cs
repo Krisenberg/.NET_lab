@@ -14,29 +14,6 @@ using System.Threading.Tasks;
 
 namespace List_10.Controllers
 {
-    //public struct CartItem
-    //{
-    //    public int Id { get; }
-    //    public string EAN13 { get; }
-    //    public string Name { get; }
-    //    public double Price { get; }
-    //    [Display(Name = "Image")]
-    //    public string ImagePath { get; }
-    //    [Display(Name = "Category")]
-    //    public string CategoryName { get; }
-    //    public int Quantity { get; }
-
-    //    public CartItem(Models.Article article, string catName, int quant)
-    //    {
-    //        Id = article.Id;
-    //        EAN13 = article.EAN13;
-    //        Name = article.Name;
-    //        Price = article.Price;
-    //        ImagePath = article.ImagePath;
-    //        CategoryName = catName;
-    //        Quantity = quant;
-    //    }
-    //}
 
     public class CartController : Controller
     {
@@ -54,8 +31,6 @@ namespace List_10.Controllers
             var shopArticles = await _context.Articles.ToListAsync();
             var cartItems = new List<CartItem>();
             double totalValue = 0;
-            //var cartArticles = new List<Models.Article>();
-            //var articlesQuantities = new Dictionary<int, int>();
 
             foreach (var article in shopArticles)
             {
@@ -69,16 +44,10 @@ namespace List_10.Controllers
                     CartItem item = new CartItem(article, catName, Int32.Parse(quantity));
                     cartItems.Add(item);
                     totalValue += (item.Quantity * item.Price);
-                    //cartArticles.Add(article);
-                    //articlesQuantities.Add(article.Id, Int32.Parse(quantity));
                 }
             }
             model.cartItems = cartItems;
             model.cartValue = totalValue;
-
-            //model.Articles = cartArticles;
-            //model.ArticlesQuantities = articlesQuantities;
-            //ViewData["cartItems"] = cartItems;
 
             return View(model);
         }
