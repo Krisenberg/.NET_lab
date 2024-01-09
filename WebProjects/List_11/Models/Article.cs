@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace List_10.Models
+namespace List_11.Models
 {
     public class Article
     {
@@ -26,6 +26,7 @@ namespace List_10.Models
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
 
+        [Display(Name = "Category")]
         [Required]
         public int CategoryId { get; set; }
 

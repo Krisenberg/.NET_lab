@@ -1,0 +1,81 @@
+﻿@page
+@model List_11.Pages.Shop.MenuModel
+@{
+}
+
+@section CategorySelection {
+    <h4>Choose a category:</h4>
+    <form method="post">
+        <div class="form-group">
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                <option value="">Select...</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Show" class="btn btn-primary" />
+        </div>
+    </form>
+}
+
+@section ProductsList {
+    <h4>Products in selected category:</h4>
+    @if (Model.Articles != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Articles[0].EAN13)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Articles[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Articles[0].Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Articles[0].ImagePath)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Articles[0].Category)
+                    </th>
+                    <th>
+                        Add to cart
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Articles)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EAN13)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @if (item.ImagePath != null)
+                            {
+                                <img id="uploadedImage" src="@Url.Content(@item.ImagePath)" alt="Uploaded Image" height="50" />
+                            }
+                            else
+                            {
+                                <img id="uploadedImage" src="~/image/no_image.png" alt="No-image Image" height="50" />
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.Name)
+                        </td>
+                        <td>
+                            <button class="btn"><img id="cartIcon" src="~/image/cart_icon.png" alt="Cart icon" height="40" /></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
