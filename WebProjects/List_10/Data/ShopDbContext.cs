@@ -1,9 +1,10 @@
 ﻿using List_10.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace List_10.Data
 {
-    public class ShopDbContext : DbContext
+    public class ShopDbContext : IdentityDbContext
     {
         public ShopDbContext(DbContextOptions<ShopDbContext> options) : base(options)
         {
@@ -13,6 +14,8 @@ namespace List_10.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Article>()
                 .HasOne(a => a.Category)
                 .WithMany(c => c.Articles)

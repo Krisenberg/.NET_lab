@@ -2,6 +2,7 @@ using List_10.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,18 @@ namespace List_10
             services.AddControllersWithViews();
             services.AddDbContextPool<ShopDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ShopDb")));
+
+            services.AddDefaultIdentity<IdentityUser>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 4;
+            })
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ShopDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +69,8 @@ namespace List_10
 
             app.UseAuthorization();
 
+            app.UseAuthentication();
+
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
@@ -63,6 +78,7 @@ namespace List_10
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
