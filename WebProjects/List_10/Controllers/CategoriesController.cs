@@ -9,9 +9,11 @@ using List_10.Data;
 using List_10.Models;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace List_10.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
         private readonly ShopDbContext _context;
@@ -156,7 +158,7 @@ namespace List_10.Controllers
                         System.IO.File.Delete(absolutePath);
                     }
                 }
-                Response.Cookies.Delete(article.Id.ToString());
+                Response.Cookies.Delete("Article_" + article.Id.ToString());
             }
 
             _context.Categories.Remove(category);

@@ -1,0 +1,123 @@
+﻿@model List_10.ViewModels.CompoundViewModel
+
+@{
+    ViewData["Title"] = "Order confirmation";
+}
+
+@if (Model.OrderVM.UserEmail != null)
+{
+    <div class="justify-content-center">
+        <div class="card" style="width: 36rem;">
+            <div class="card-img-top row">
+                <i class="fa-solid fa-circle-check" style="color: #1e8037;"></i>
+                <h3>Order confirmed!</h3>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Order details</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item row">
+                    <p>User: </p>
+                    <p>@Model.OrderVM.UserEmail</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>First name: </p>
+                    <p>@Model.OrderVM.FirstName</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>Last name: </p>
+                    <p>@Model.OrderVM.LastName</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>Email: </p>
+                    <p>@Model.OrderVM.Email</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>Street: </p>
+                    <p>@Model.OrderVM.Street</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>Address line 1: </p>
+                    <p>@Model.OrderVM.AddressLine1</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>Address line 2: </p>
+                    <p>@Model.OrderVM.AddressLine2</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>City: </p>
+                    <p>@Model.OrderVM.City</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>Country: </p>
+                    <p>@Model.OrderVM.Country</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>Zip code: </p>
+                    <p>@Model.OrderVM.Zip</p>
+                </li>
+                <li class="list-group-item row">
+                    <p>Payment method: </p>
+                    <p>@Model.OrderVM.PaymentMethod</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    @* <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <i class="fa-solid fa-circle-check" style="color: #1e8037; font-size: 24px;"></i>
+                <p>Order confirmed!</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <h2>Personal info</h2>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label class="control-label">First name</label>
+                    <p>@Model.OrderVM.FirstName</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="control-label">Last name</label>
+                    <p>@Model.OrderVM.LastName</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <p>@Model.OrderVM.Email</p>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label class="control-label">Street</label>
+                    <p>@Model.OrderVM.Street</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="control-label">Address (line 1)</label>
+                    <p>@Model.OrderVM.AddressLine1</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="control-label">Address (line 2)</label>
+                    <p>@Model.OrderVM.AddressLine2</p>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label class="control-label">City</label>
+                    <p>@Model.OrderVM.City</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="control-label">Country</label>
+                    <p>@Model.OrderVM.Country</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="control-label">Zip</label>
+                    <p>@Model.OrderVM.Zip</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Payment method</label>
+                <p>@Model.OrderVM.PaymentMethod</p>
+            </div>
+        </div>
+    </div> *@
+}

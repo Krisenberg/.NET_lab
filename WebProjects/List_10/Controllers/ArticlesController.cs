@@ -11,9 +11,11 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace List_10.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ArticlesController : Controller
     {
         private readonly ShopDbContext _context;
@@ -173,7 +175,7 @@ namespace List_10.Controllers
                 }
             }
 
-            Response.Cookies.Delete(article.Id.ToString());
+            Response.Cookies.Delete("Article_" + article.Id.ToString());
 
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();

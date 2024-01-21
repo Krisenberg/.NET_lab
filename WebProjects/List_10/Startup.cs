@@ -1,3 +1,4 @@
+using List_10.Areas.Identity;
 using List_10.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,18 +40,28 @@ namespace List_10
             services.AddDefaultIdentity<IdentityUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequiredLength = 4;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 4;
             })
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ShopDbContext>();
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<ShopDbContext>();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("NotAdmin", policy => policy.AddRequirements(new NotAdminRequirement()));
+            });
+
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<ShopDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+            UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -67,9 +78,11 @@ namespace List_10
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
-            app.UseAuthentication();
+            IdentityDataInit.SeedData(userManager, roleManager);
 
             app.UseSession();
 

@@ -91,7 +91,7 @@ namespace List_10.Controllers
             {
                 CookieOptions options = new CookieOptions();
                 options.Expires = DateTime.Now.AddDays(7);
-                string key = model.ItemAddedToCartId.Value.ToString();
+                string key = "Article_" + model.ItemAddedToCartId.Value.ToString();
                 if (Request.Cookies[key] != null)
                 {
                     int value = Int32.Parse(Request.Cookies[key]) + 1;

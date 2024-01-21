@@ -1,13 +1,177 @@
-﻿@model List_10.ViewModels.CartViewModel
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model List_10.ViewModels.CompoundViewModel
 
 @{
     ViewData["Title"] = "Summary";
 }
 
-@if (Model.cartItems != null && Model.cartItems.Count() > 0)
+@if (Model.CartVM.cartItems != null && Model.CartVM.cartItems.Count() > 0)
 {
     <h2>Summary</h2>
-    <table class="table">
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CartVM.cartItems[0].EAN13)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CartVM.cartItems[0].Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CartVM.cartItems[0].Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CartVM.cartItems[0].ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CartVM.cartItems[0].CategoryName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CartVM.cartItems[0].Quantity)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CartVM.cartItems)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EAN13)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @if (item.ImagePath != null)
+                                {
+                                    <img id="uploadedImage" src="@Url.Content(@item.ImagePath)" alt="Uploaded Image" height="50" />
+                                }
+                                else
+                                {
+                                    <img id="uploadedImage" src="~/image/no_image.png" alt="No-image Image" height="40" />
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryName)
+                            </td>
+                            <td>
+                                <p>@item.Quantity</p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <form asp-action="ShowOrder" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="card text-bg-grey mb-3" style="max-width: 20rem;">
+            <div class="card-header"><h5>ORDER SUMMARY</h5></div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <h5>TOTAL:</h5>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5>@Math.Round(Model.CartVM.cartValue, 2)</h5>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" value="Buy" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <h2>Personal info</h2>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="OrderVM.FirstName" class="control-label">First name</label>
+                    <input asp-for="OrderVM.FirstName" class="form-control" />
+                    <span asp-validation-for="OrderVM.FirstName" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="OrderVM.LastName" class="control-label">Last name</label>
+                    <input asp-for="OrderVM.LastName" class="form-control" />
+                    <span asp-validation-for="OrderVM.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="OrderVM.UserEmail" type="hidden" class="form-control" value=@User.Identity.Name />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderVM.Email" class="control-label">Email</label>
+                <input asp-for="OrderVM.Email" class="form-control" />
+                <span asp-validation-for="OrderVM.Email" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="OrderVM.Street" class="control-label">Street</label>
+                    <input asp-for="OrderVM.Street" class="form-control" />
+                    <span asp-validation-for="OrderVM.Street" class="text-danger"></span>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label asp-for="OrderVM.AddressLine1" class="control-label">Address (line 1)</label>
+                    <input asp-for="OrderVM.AddressLine1" class="form-control" />
+                    <span asp-validation-for="OrderVM.AddressLine1" class="text-danger"></span>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label asp-for="OrderVM.AddressLine2" class="control-label">Address (line 2)</label>
+                    <input asp-for="OrderVM.AddressLine2" class="form-control" />
+                    <span asp-validation-for="OrderVM.AddressLine2" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label asp-for="OrderVM.City" class="control-label">City</label>
+                    <input asp-for="OrderVM.City" class="form-control" />
+                    <span asp-validation-for="OrderVM.City" class="text-danger"></span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="OrderVM.Country" class="control-label">Country</label>
+                    <input asp-for="OrderVM.Country" class="form-control" />
+                    <span asp-validation-for="OrderVM.Country" class="text-danger"></span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="OrderVM.Zip" class="control-label">Zip</label>
+                    <input asp-for="OrderVM.Zip" class="form-control" />
+                    <span asp-validation-for="OrderVM.Zip" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderVM.PaymentMethod" class="control-label">Payment method</label>
+
+                @foreach (List_10.ViewModels.PaymentMethods method in Enum.GetValues(typeof(List_10.ViewModels.PaymentMethods)))
+                {
+                    <div class="form-check">
+                        <input asp-for="OrderVM.PaymentMethod" type="radio" value="@method.ToString()" id="@($"PaymentMethod_{method}")" class="form-check-input" />
+                        <label class="form-check-label" for="@($"PaymentMethod_{method}")">@method.ToString().Replace('_', ' ')</label>
+                    </div>
+                }
+                <span asp-validation-for="OrderVM.PaymentMethod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                    <label class="form-check-label" for="invalidCheck3">
+                        Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    @* <table class="table">
         <thead>
             <tr>
                 <th>
@@ -61,8 +225,8 @@
                     </td>
                 </tr>
             }
-        </tbody>
-        <tfoot class="table-footer">
+        </tbody> *@
+        @* <tfoot class="table-footer">
             <tr>
                 <td>
                     <p>TOTAL:</p>
@@ -72,5 +236,5 @@
                 </td>
             </tr>
         </tfoot>
-    </table>
+    </table> *@
 }
