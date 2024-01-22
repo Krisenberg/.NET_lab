@@ -146,13 +146,24 @@
                 </div>
             </div>
             <div class="form-group">
-                <label asp-for="OrderVM.PaymentMethod" class="control-label">Payment method</label>
-
+                <label asp-for="OrderVM.PaymentMethod" class="control-label"><h2>Payment method</h2></label>
+                @{
+                    Dictionary<List_10.ViewModels.PaymentMethods, string> paymentMethodIcons = new Dictionary<List_10.ViewModels.PaymentMethods, string>
+                    {
+                        { List_10.ViewModels.PaymentMethods.Visa, "fa fa-cc-visa" },
+                        { List_10.ViewModels.PaymentMethods.Mastercard, "fa fa-cc-mastercard" },
+                        { List_10.ViewModels.PaymentMethods.PayPal, "fa fa-cc-paypal" },
+                        { List_10.ViewModels.PaymentMethods.Cash_on_delivery, "fa fa-money" },
+                    };
+                }
                 @foreach (List_10.ViewModels.PaymentMethods method in Enum.GetValues(typeof(List_10.ViewModels.PaymentMethods)))
                 {
                     <div class="form-check">
                         <input asp-for="OrderVM.PaymentMethod" type="radio" value="@method.ToString()" id="@($"PaymentMethod_{method}")" class="form-check-input" />
-                        <label class="form-check-label" for="@($"PaymentMethod_{method}")">@method.ToString().Replace('_', ' ')</label>
+                        <label class="form-check-label" for="@($"PaymentMethod_{method}")">
+                            <i class="@paymentMethodIcons[method]" style="font-size:24px;margin-right:10px"></i>
+                            @method.ToString().Replace('_', ' ')
+                        </label>
                     </div>
                 }
                 <span asp-validation-for="OrderVM.PaymentMethod" class="text-danger"></span>

@@ -66,6 +66,7 @@ namespace List_10
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //app.AddEfDiagrams<ShopDbContext>();
             }
             else
             {
