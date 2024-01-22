@@ -53,6 +53,10 @@ namespace List_10.Data
                 .HasForeignKey(oa => oa.ArticleHistoryId);
 
             modelBuilder.Entity<Order>()
+                .Property(o => o.OrderDate)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Order>()
                 .HasMany(o => o.OrderArticles)
                 .WithOne(oa => oa.Order)
                 .HasForeignKey(oa => oa.OrderId);

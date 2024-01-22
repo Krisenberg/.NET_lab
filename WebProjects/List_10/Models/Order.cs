@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +10,9 @@ namespace List_10.Models
     public class Order
     {
         public int Id { get; set; }
+
+        [Required]
+        public DateTime OrderDate { get; set; }
 
         [Required]
         public string UserName { get; set; }
@@ -50,9 +54,10 @@ namespace List_10.Models
 
         public Order() { }
 
-        public Order(string userName,string firstName, string lastName, string email, string street, string addressLine1, string addressLine2, string city, string country, string zip, string paymentMethod, bool isPaid)
+        public Order(string userName, DateTime orderDate, string firstName, string lastName, string email, string street, string addressLine1, string addressLine2, string city, string country, string zip, string paymentMethod, bool isPaid)
         {
             UserName = userName;
+            OrderDate = orderDate;
             FirstName = firstName;
             LastName = lastName;
             Email = email;

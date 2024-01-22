@@ -154,6 +154,7 @@ namespace List_10.Controllers
                 bool isPaid = (compoundVM.OrderVM.PaymentMethod.ToLower().Replace('_', ' ') == PaymentMethods.Cash_on_delivery.ToString().ToLower().Replace('_', ' ')) ? false : true;
                 var order = new Order(
                         compoundVM.OrderVM.UserEmail,
+                        DateTime.Now,
                         compoundVM.OrderVM.FirstName,
                         compoundVM.OrderVM.LastName,
                         compoundVM.OrderVM.Email,
