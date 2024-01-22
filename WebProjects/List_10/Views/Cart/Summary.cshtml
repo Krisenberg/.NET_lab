@@ -71,8 +71,8 @@
             </table>
         </div>
     </div>
-    <form asp-action="ShowOrder" method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form asp-action="ShowOrder">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="card text-bg-grey mb-3" style="max-width: 20rem;">
             <div class="card-header"><h5>ORDER SUMMARY</h5></div>
             <div class="card-body">
@@ -157,84 +157,12 @@
                 }
                 <span asp-validation-for="OrderVM.PaymentMethod" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-                    <label class="form-check-label" for="invalidCheck3">
-                        Agree to terms and conditions
-                    </label>
-                    <div class="invalid-feedback">
-                        You must agree before submitting.
-                    </div>
-                </div>
-            </div>
         </div>
     </form>
+}
 
-    @* <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.cartItems[0].EAN13)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.cartItems[0].Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.cartItems[0].Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.cartItems[0].ImagePath)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.cartItems[0].CategoryName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.cartItems[0].Quantity)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.cartItems)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EAN13)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @if (item.ImagePath != null)
-                        {
-                            <img id="uploadedImage" src="@Url.Content(@item.ImagePath)" alt="Uploaded Image" height="50" />
-                        }
-                        else
-                        {
-                            <img id="uploadedImage" src="~/image/no_image.png" alt="No-image Image" height="40" />
-                        }
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CategoryName)
-                    </td>
-                    <td>
-                        <p>@item.Quantity</p>
-                    </td>
-                </tr>
-            }
-        </tbody> *@
-        @* <tfoot class="table-footer">
-            <tr>
-                <td>
-                    <p>TOTAL:</p>
-                </td>
-                <td>
-                    <p>@Math.Round(Model.cartValue, 2)</p>
-                </td>
-            </tr>
-        </tfoot>
-    </table> *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

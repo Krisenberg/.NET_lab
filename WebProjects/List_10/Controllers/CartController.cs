@@ -151,7 +151,7 @@ namespace List_10.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool isPaid = (compoundVM.OrderVM.PaymentMethod.ToLower() == PaymentMethods.Cash_on_delivery.ToString().ToLower().Replace('_', ' ')) ? false : true;
+                bool isPaid = (compoundVM.OrderVM.PaymentMethod.ToLower().Replace('_', ' ') == PaymentMethods.Cash_on_delivery.ToString().ToLower().Replace('_', ' ')) ? false : true;
                 var order = new Order(
                         compoundVM.OrderVM.UserEmail,
                         compoundVM.OrderVM.FirstName,
