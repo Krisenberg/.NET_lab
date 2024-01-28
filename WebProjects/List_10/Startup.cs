@@ -1,5 +1,7 @@
 using List_10.Areas.Identity;
 using List_10.Data;
+using List_10.Models;
+using List_10.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +35,7 @@ namespace List_10
 
             services.AddSession(); // Optionally it can be configured
 
+            services.AddTransient<RepositoryBase<Article>, ArticleRepository>();
             services.AddControllersWithViews();
             services.AddDbContextPool<ShopDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ShopDb")));
