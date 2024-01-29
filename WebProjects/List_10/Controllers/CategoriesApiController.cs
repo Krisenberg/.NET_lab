@@ -15,50 +15,55 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace List_10.Controllers
 {
-    [Route("api/article")]
+    [Route("api/category")]
     [ApiController]
     public class CategoriesApiController : ControllerBase
     {
-        private IRepository<Article> repository;
-        private IHostingEnvironment _hostingEnvironment;
-        public CategoriesApiController(ShopDbContext context, IHostingEnvironment hostingEnvironment)
+        private IRepository<Category> repository;
+        public CategoriesApiController(CategoryRepository repo)
         {
-            repository = new ArticleRepository(context);
+            repository = repo;
         }
 
-        // GET: api/<ArticlesApiController>
+        // GET: api/category
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Article>>> Get()
+        public async Task<ActionResult<IEnumerable<Category>>> Get()
         {
             return await repository.Get();
         }
 
-        // GET api/<ArticlesApiController>/5
+        // GET api/category/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Article>> Get(int id)
+        public async Task<ActionResult<Category>> Get(int id)
         {
             return await repository.Get(id);
         }
 
-        // POST api/<ArticlesApiController>
+        // POST api/category
         [HttpPost]
-        public async Task<ActionResult<Article>> Post([FromBody] Article art)
+        public async Task<ActionResult<Category>> Post([FromBody] Category cat)
         {
-            return await repository.Create(art);
+            return await repository.Create(cat);
         }
 
-        // PUT api/<ArticlesApiController>/5
-        [HttpPut]
-        public async Task<IActionResult> Put([FromBody] Article art)
+        // PUT api/category/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] Category cat)
         {
-            return await repository.Update(art.Id, art);
+            return await repository.Update(id, cat);
+
         }
 
-        // DELETE api/<ArticlesApiController>/5
+        // DELETE api/category/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            return await repository.Delete(id);
+            var res = await repository.Delete(id);
+
+            List<string> cookiesToBeDeleted = ((CategoryRepository)repository).CookieIds.ToList();
+            cookiesToBeDeleted.ForEach(cookie => Response.Cookies.Delete(cookie));
+
+            return res;
         }
 
     }

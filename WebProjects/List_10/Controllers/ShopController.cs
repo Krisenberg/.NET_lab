@@ -81,6 +81,8 @@ namespace List_10.Controllers
             var articles = await _context.Articles
                 .Include(a => a.Category)
                 .Where(a => a.CategoryId == model.SelectedCategoryId)
+                .OrderBy(a => a.Id)
+                .Take(1)
                 .ToListAsync();
 
             model.Articles = articles;

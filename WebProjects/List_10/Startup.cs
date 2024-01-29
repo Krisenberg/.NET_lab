@@ -35,10 +35,15 @@ namespace List_10
 
             services.AddSession(); // Optionally it can be configured
 
-            services.AddTransient<RepositoryBase<Article>, ArticleRepository>();
+            //services.AddScoped<RepositoryBase<Article>, ArticleRepository>();
+            //services.AddScoped<RepositoryBase<Category>, CategoryRepository>();
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<ArticleRepository>();
+
             services.AddControllersWithViews();
             services.AddDbContextPool<ShopDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ShopDb")));
+                options.UseSqlServer(Configuration.GetConnectionString("ShopDb"))
+                       .EnableSensitiveDataLogging());
 
             services.AddDefaultIdentity<IdentityUser>(options =>
             {

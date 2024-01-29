@@ -51,7 +51,7 @@
                     }                 
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="itemsTableBody">
                 @foreach (var item in Model.Articles)
                 {
                     <tr>
@@ -91,5 +91,122 @@
                 }
             </tbody>
         </table>
+        <div>
+            @{
+                var lastItemId = Model.Articles.LastOrDefault()?.Id ?? 0;
+                var isAdmin = User.IsInRole("Admin");
+            }
+            <button onclick="jsLoadMore(@Model.SelectedCategoryId, @lastItemId, @isAdmin.ToString().ToLower())">More</button>
+
+        </div>
     }
+}
+
+@section Scripts {
+    <script>
+        var lastItemId = -1;
+
+        function renderArticle(item, isAdmin) {
+            const newRow = document.createElement('tr');
+
+            const ean13Cell = document.createElement('td');
+            ean13Cell.textContent = item.eaN13;
+            newRow.appendChild(ean13Cell);
+
+            const nameCell = document.createElement('td');
+            nameCell.textContent = item.name;
+            newRow.appendChild(nameCell);
+
+            const priceCell = document.createElement('td');
+            priceCell.textContent = item.price;
+            newRow.appendChild(priceCell);
+
+            const imageCell = document.createElement('td');
+            const imgElement = document.createElement('img');
+            imgElement.src = item.imagePath ? item.imagePath : '/image/no_image.png';
+            imgElement.alt = item.imagePath ? 'Uploaded Image' : 'No-image Image';
+            imgElement.height = 50;
+            imageCell.appendChild(imgElement);
+            newRow.appendChild(imageCell);
+
+            const categoryCell = document.createElement('td');
+            categoryCell.textContent = ' '; //to be fixed
+            newRow.appendChild(categoryCell);
+
+            if (!isAdmin) {
+                const formCell = document.createElement('td');
+
+                // Create form element
+                const formElement = document.createElement('form');
+                formElement.action = 'ShowProducts';
+                formElement.method = 'post';
+
+                // Create hidden input for ItemAddedToCartId
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'ItemAddedToCartId';
+                hiddenInput.value = item.Id;
+
+                // Create submit button
+                const submitButton = document.createElement('button');
+                submitButton.type = 'submit';
+                submitButton.className = 'btn';
+
+                // Create img element for the button icon
+                const imgIcon = document.createElement('img');
+                imgIcon.id = 'cartIcon';
+                imgIcon.src = '/image/cart_icon.png';
+                imgIcon.alt = 'Cart icon';
+                imgIcon.height = 40;
+
+                // Append elements to the form and formCell
+                submitButton.appendChild(imgIcon);
+                formElement.appendChild(hiddenInput);
+                formElement.appendChild(submitButton);
+                formCell.appendChild(formElement);
+
+                // Append formCell to the newRow
+                newRow.appendChild(formCell);
+            }
+            return newRow;
+        }
+        
+        function jsLoader(number, categoryId, lastId, isAdmin) {
+            const xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    try {
+                        const articles = JSON.parse(this.responseText);
+                        const tableBody = document.getElementById('itemsTableBody');
+                        articles.forEach(article => {
+                            const newRow = renderArticle(article, isAdmin);
+                            tableBody.appendChild(newRow);
+                            lastItemId = article.id;
+                        });
+                    } catch (e) {
+                        console.warn('There was an error in JSON. Could not be parsed.');
+                    }
+                } else if (this.status === 204) {
+                    window.alert("No content");
+                } else {
+                    console.warn("Received " + this.status + "as a response code.");
+                }
+            };
+
+            let str = "/api/article/" + categoryId + "/" + lastId + "/" + number;
+            console.warn("categoryId: " + categoryId + "LastId: " + lastId + ", number: " + number);
+            console.warn("req: " + str);
+            xhr.open("get", str);
+            xhr.send();
+
+        }
+
+        function jsLoadMore(categoryId, lastId, isAdmin) {
+            isAdmin = JSON.parse(isAdmin);
+            if (lastItemId == -1)
+                lastItemId = lastId;
+            jsLoader(2, categoryId, lastItemId, isAdmin);
+        }
+
+    </script>
 }

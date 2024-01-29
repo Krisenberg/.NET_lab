@@ -26,7 +26,7 @@ namespace List_10.Repositories
             return entity;
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public virtual async Task<IActionResult> Delete(int id)
         {
             var data = await _dbSet.FindAsync(id);
             if (data == null)
@@ -61,12 +61,42 @@ namespace List_10.Repositories
 
         public async Task<IActionResult> Update(int id, T entity)
         {
-            var existingEntity = await _dbSet.FindAsync(id);
-            if (existingEntity == null)
+            //var existingEntity = await _dbSet.FindAsync(id);
+            //if (existingEntity == null)
+            //{
+            //    return NotFound();
+            //}
+            ////_context.Attach(entity);
+            ////_context.Entry(entity).State = EntityState.Modified;
+
+            //try
+            //{
+            //    _context.Update(entity);
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    throw;
+            //}
+
+            //return Ok();
+            var idProperty = typeof(T).GetProperty("Id");
+            if (idProperty != null)
+            {
+                var idValue = (int) idProperty.GetValue(entity);
+                if (id != idValue)
+                {
+                    return BadRequest();
+                }
+            }
+
+            var existingOrder = await _dbSet.FindAsync(id);
+            if (existingOrder == null)
             {
                 return NotFound();
             }
-            _context.Update(entity);
+
+            _context.Entry(existingOrder).CurrentValues.SetValues(entity);
 
             try
             {
