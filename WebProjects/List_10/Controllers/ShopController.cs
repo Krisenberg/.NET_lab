@@ -24,7 +24,8 @@ namespace List_10.Controllers
             _context = context;
             model = new CategorySelectionViewModel
             {
-                SelectedCategoryId = -1
+                SelectedCategoryId = -1,
+                ArticlesLoadCount = 5
             };
         }
 
@@ -53,7 +54,7 @@ namespace List_10.Controllers
         [HttpPost]
         public async Task<IActionResult> ShowProducts(CategorySelectionViewModel model)
         {
-
+            model.ArticlesLoadCount = 5;
             var categories = await _context.Categories.ToListAsync();
             model.Categories = categories;
 
@@ -82,29 +83,30 @@ namespace List_10.Controllers
                 .Include(a => a.Category)
                 .Where(a => a.CategoryId == model.SelectedCategoryId)
                 .OrderBy(a => a.Id)
-                .Take(1)
+                .Take(model.ArticlesLoadCount)
                 .ToListAsync();
 
             model.Articles = articles;
 
             ViewData["Categories"] = new SelectList(categories, "Id", "Name", model.SelectedCategoryId);
 
-            if (model.ItemAddedToCartId.HasValue)
-            {
-                CookieOptions options = new CookieOptions();
-                options.Expires = DateTime.Now.AddDays(7);
-                string key = "Article_" + model.ItemAddedToCartId.Value.ToString();
-                if (Request.Cookies[key] != null)
-                {
-                    int value = Int32.Parse(Request.Cookies[key]) + 1;
-                    Response.Cookies.Append(key, value.ToString(), options);
-                }
-                else
-                {
-                    Response.Cookies.Append(key, "1", options);
-                }
-                model.ItemAddedToCartId = null;
-            }
+            //if (model.ItemAddedToCartId.HasValue)
+            //{
+            //    CookieOptions options = new CookieOptions();
+            //    options.Expires = DateTime.Now.AddDays(7);
+            //    string key = "Article_" + model.ItemAddedToCartId.Value.ToString();
+            //    if (Request.Cookies[key] != null)
+            //    {
+
+            //        int value = Int32.Parse(Request.Cookies[key]) + 1;
+            //        Response.Cookies.Append(key, value.ToString(), options);
+            //    }
+            //    else
+            //    {
+            //        Response.Cookies.Append(key, "1", options);
+            //    }
+            //    model.ItemAddedToCartId = null;
+            //}
 
             return View("Menu", model);
         }

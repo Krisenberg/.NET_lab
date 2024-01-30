@@ -40,9 +40,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Articles[0].ImagePath)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Articles[0].Category)
-                    </th>
                     @if (!User.IsInRole("Admin"))
                     {
                         <th>
@@ -74,29 +71,29 @@
                                 <img id="uploadedImage" src="~/image/no_image.png" alt="No-image Image" height="50" />
                             }
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Category.Name)
-                        </td>
                         @if (!User.IsInRole("Admin"))
                         {
                             <td>
-                                <form asp-action="ShowProducts" method="post">
+                            <button type="button" class="btn" id="cartButton" onclick="manageArticleCookie(@item.Id)">
+                                <img id="cartIcon" src="~/image/cart_icon.png" alt="Cart icon" height="40" />
+                            </button>
+                                @* <form asp-action="ShowProducts" method="post">
                                     <input asp-for="ItemAddedToCartId" type="hidden" value="@item.Id" />
-                                    @* <button asp-action="ShowProducts" class="btn"><img id="cartIcon" src="~/image/cart_icon.png" alt="Cart icon" height="40" /></button> *@
                                     <button type="submit" class="btn"><img id="cartIcon" src="~/image/cart_icon.png" alt="Cart icon" height="40" /></button>
-                                </form>
+                                </form> *@
                             </td>
                         }                        
                     </tr>
                 }
             </tbody>
         </table>
-        <div>
+        <div style ="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
             @{
                 var lastItemId = Model.Articles.LastOrDefault()?.Id ?? 0;
                 var isAdmin = User.IsInRole("Admin");
+                var number = Model.ArticlesLoadCount;
             }
-            <button onclick="jsLoadMore(@Model.SelectedCategoryId, @lastItemId, @isAdmin.ToString().ToLower())">More</button>
+            <button type="button" class="btn btn-outline-info" onclick="jsLoadMore(@number, @Model.SelectedCategoryId, @lastItemId, @isAdmin.ToString().ToLower())">More</button>
 
         </div>
     }
@@ -104,6 +101,38 @@
 
 @section Scripts {
     <script>
+        function manageArticleCookie(articleId) {
+            // Check if the articleId has a value
+            console.warn('Article id: ' + articleId);
+            if (articleId) {
+                console.warn('Inside a function.');
+                var options = { expires: 7 };  // Set cookie options
+
+                // Create the cookie key
+                var key = "Article_" + articleId.toString();
+
+                // Check if the cookie exists
+                if (getCookie(key) !== null) {
+                    // If it exists, increment its value
+                    var value = parseInt(getCookie(key)) + 1;
+                    console.warn('Cookie - key: ' + key + 'value: ' + value + ', expires: ' + new Date(options.expires * 24 * 60 * 60 * 1000 + Date.now()).toUTCString());
+                    document.cookie = key + "=" + value.toString() + "; expires=" + new Date(options.expires * 24 * 60 * 60 * 1000 + Date.now()).toUTCString() + "; path=/";
+                } else {
+                    // If it doesn't exist, set its value to 1
+                    console.warn('Cookie - key: 1, expires: ' + new Date(options.expires * 24 * 60 * 60 * 1000 + Date.now()).toUTCString());
+                    document.cookie = key + "=1; expires=" + new Date(options.expires * 24 * 60 * 60 * 1000 + Date.now()).toUTCString() + "; path=/";
+                }
+            }
+        }
+
+        // Function to get the value of a cookie by its name
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+            return null;
+        }
+
         var lastItemId = -1;
 
         function renderArticle(item, isAdmin) {
@@ -123,34 +152,27 @@
 
             const imageCell = document.createElement('td');
             const imgElement = document.createElement('img');
-            imgElement.src = item.imagePath ? item.imagePath : '/image/no_image.png';
+            var imagePath = item.imagePath;
+            if (imagePath) {
+                if (imagePath.startsWith('~')) {
+                    imagePath = imagePath.substring(1);
+                }
+            } else {
+                imagePath = '/image/no_image.png';
+            }
+            imgElement.src = imagePath;
             imgElement.alt = item.imagePath ? 'Uploaded Image' : 'No-image Image';
             imgElement.height = 50;
             imageCell.appendChild(imgElement);
             newRow.appendChild(imageCell);
 
-            const categoryCell = document.createElement('td');
-            categoryCell.textContent = ' '; //to be fixed
-            newRow.appendChild(categoryCell);
-
             if (!isAdmin) {
                 const formCell = document.createElement('td');
 
-                // Create form element
-                const formElement = document.createElement('form');
-                formElement.action = 'ShowProducts';
-                formElement.method = 'post';
-
-                // Create hidden input for ItemAddedToCartId
-                const hiddenInput = document.createElement('input');
-                hiddenInput.type = 'hidden';
-                hiddenInput.name = 'ItemAddedToCartId';
-                hiddenInput.value = item.Id;
-
-                // Create submit button
-                const submitButton = document.createElement('button');
-                submitButton.type = 'submit';
-                submitButton.className = 'btn';
+                // Create button element
+                const buttonElement = document.createElement('button');
+                buttonElement.type = 'button'; // Set type to button
+                buttonElement.className = 'btn';
 
                 // Create img element for the button icon
                 const imgIcon = document.createElement('img');
@@ -159,11 +181,15 @@
                 imgIcon.alt = 'Cart icon';
                 imgIcon.height = 40;
 
-                // Append elements to the form and formCell
-                submitButton.appendChild(imgIcon);
-                formElement.appendChild(hiddenInput);
-                formElement.appendChild(submitButton);
-                formCell.appendChild(formElement);
+                // Add click event listener to the button
+                buttonElement.addEventListener('click', function () {
+                    console.warn('Item Id: ' + item.id);
+                    manageArticleCookie(item.id);
+                });
+
+                // Append elements to the button and formCell
+                buttonElement.appendChild(imgIcon);
+                formCell.appendChild(buttonElement);
 
                 // Append formCell to the newRow
                 newRow.appendChild(formCell);
@@ -201,11 +227,11 @@
 
         }
 
-        function jsLoadMore(categoryId, lastId, isAdmin) {
+        function jsLoadMore(number, categoryId, lastId, isAdmin) {
             isAdmin = JSON.parse(isAdmin);
             if (lastItemId == -1)
                 lastItemId = lastId;
-            jsLoader(2, categoryId, lastItemId, isAdmin);
+            jsLoader(number, categoryId, lastItemId, isAdmin);
         }
 
     </script>

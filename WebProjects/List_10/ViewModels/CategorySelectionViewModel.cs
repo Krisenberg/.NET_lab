@@ -9,5 +9,6 @@ namespace List_10.ViewModels
         public List<Category> Categories { get; set; }
         public List<Article> Articles { get; set; }
         public int? ItemAddedToCartId { get; set; }
+        public int ArticlesLoadCount { get; set; }
     }
 }
