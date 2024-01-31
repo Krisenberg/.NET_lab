@@ -61,25 +61,6 @@ namespace List_10.Repositories
 
         public async Task<IActionResult> Update(int id, T entity)
         {
-            //var existingEntity = await _dbSet.FindAsync(id);
-            //if (existingEntity == null)
-            //{
-            //    return NotFound();
-            //}
-            ////_context.Attach(entity);
-            ////_context.Entry(entity).State = EntityState.Modified;
-
-            //try
-            //{
-            //    _context.Update(entity);
-            //    await _context.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    throw;
-            //}
-
-            //return Ok();
             var idProperty = typeof(T).GetProperty("Id");
             if (idProperty != null)
             {
